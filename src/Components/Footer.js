@@ -71,6 +71,9 @@ export default class Footer extends Component {
   }
 }
 const Styles = {
+  footerContainer:{
+    borderTop:"1px solid #E4E4E4"
+  },
   footerContainerFirst: {
     marginLeft: "9%",
     marginTop: "4%",

@@ -9,13 +9,14 @@ import Login from "./pages/Login"
 function App() {
   return (
     <div className="App">
-      <Login />
-      <Header></Header>
-      <Slider></Slider>
-      <Introduction></Introduction>
-      <Heatmap></Heatmap>
-      <Testimonial></Testimonial>
-      <Footer></Footer>
+      <Login/>
+     {/* <Header></Header> 
+    <Slider></Slider>
+     <Introduction></Introduction>
+     <Heatmap></Heatmap>
+     <Testimonial></Testimonial>
+     <Footer></Footer> */}
+     <Footer></Footer>
     </div>
   );
 }
