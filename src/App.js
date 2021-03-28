@@ -7,10 +7,12 @@ import Heatmap from "./Components/Heatmap";
 import Testimonial from "./Components/Testimonial";
 import Footer from "./Components/Footer";
 import Login from "./pages/Login"
+import Signup from "./pages/Signup"
 function App() {
   return (
     <div className="App">
-      <Login/>
+      <Signup/>
+      {/* <Slider></Slider> */}
      {/* <Header></Header> 
     <Slider></Slider>
      <Introduction></Introduction>

@@ -26,11 +26,20 @@ export default class Navbar extends Component {
                 class="ms-auto align-items-center navbar-nav"
                 style={Styles.marginRightULg}
               >
-                <a class="nav-link active" aria-current="page" href="#">
+                <a style={Styles.navItemText} class="nav-link active" aria-current="page" href="#">
                   Home
                 </a>
-                <a class="nav-link active" aria-current="page" href="#">
+                <a style={{...Styles.marginLeftSm,...Styles.navItemText}} class="nav-link active" aria-current="page" href="#">
                   Planting
+                </a>
+                <a style={{...Styles.marginLeftSm,...Styles.navItemText}} class="nav-link active" aria-current="page" href="#">
+                  Biomap
+                </a>
+                <a style={{...Styles.marginLeftSm,...Styles.navItemText}} class="nav-link active" aria-current="page" href="#">
+                  Biove Angel
+                </a>
+                <a style={{...Styles.marginLeftSm,...Styles.navItemText}} class="nav-link active" aria-current="page" href="#">
+                  About Us
                 </a>
                 <a
                   style={{ ...Styles.btnLanguage, ...Styles.marginRightMed }}
@@ -129,7 +138,10 @@ export default class Navbar extends Component {
 }
 
 const Styles = {
-  
+  navItemText:{
+    fontSize:"13px",
+
+  },
   btnLanguage: {
     fontSize: "13px",
     display: "flex",
@@ -140,7 +152,7 @@ const Styles = {
     height: "40px",
     backgroundColor: "#01A78E",
     borderRadius: "20px",
-    marginLeft: "80px",
+    marginLeft: "70px",
   },
   avatarContainer: {
     borderRadius: "50%",
