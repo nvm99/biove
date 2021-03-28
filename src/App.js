@@ -6,15 +6,17 @@ import Introduction from "./Components/Introduction"
 import Heatmap from "./Components/Heatmap";
 import Testimonial from "./Components/Testimonial";
 import Footer from "./Components/Footer";
+import Login from "./pages/Login"
 function App() {
   return (
     <div className="App">
-     <Header></Header>
-     <Slider></Slider>
+      <Login/>
+     {/* <Header></Header> */}
+     {/* <Slider></Slider>
      <Introduction></Introduction>
      <Heatmap></Heatmap>
      <Testimonial></Testimonial>
-     <Footer></Footer>
+     <Footer></Footer> */}
     </div>
   );
 }
