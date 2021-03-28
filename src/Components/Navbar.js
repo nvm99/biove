@@ -4,7 +4,7 @@ import avatarMenu from "../assets/avatarMenu.png";
 export default class Navbar extends Component {
   render() {
     return (
-      <div style={Styles.marginTopMed}>
+      <div style={Styles.paddingVertical}>
         <nav class="navbar navbar-expand-lg navbar-dark">
           <div class="container-fluid" >
             <a class="navbar-brand" href="#" style={Styles.marginLeftMed}>
@@ -165,8 +165,9 @@ const Styles = {
   marginRightULg: {
     marginRight: "120px",
   },
-  marginTopMed: {
-    marginTop: "20px",
+  paddingVertical: {
+    paddingTop: "10px",
+    paddingBottom: "10px",
   },
   dropdownProfile: {
     display: "flex",
