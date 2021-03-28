@@ -29,10 +29,10 @@ export default class Slider extends Component {
 const Styles = {
   sliderContainer: {
     backgroundColor: "white",
-    paddingTop: "80px",
+    paddingTop: "7%",
   },
   sliderTextContainer: {
-    marginLeft: "125px",
+    marginLeft: "9%",
     display: "flex",
     marginBottom:"40px"
   },
@@ -40,10 +40,10 @@ const Styles = {
     fontSize: "40px",
     fontWeight: "500",
     display: "block",
-    width: "400px",
+    width: "35%",
   },
   sliderTextDescriptionContainer: {
-    width: "480px",
+    width: "40%",
     marginLeft: "50px",
     marginTop: "30px",
   },

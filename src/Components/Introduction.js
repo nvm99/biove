@@ -9,8 +9,13 @@ export default class Introduction extends Component {
         <p style={Styles.introductionTitle}>Giới thiệu</p>
         <p style={Styles.introductionHead}> BIOVE mang sứ mệnh tiên phong </p>
         <div style={Styles.introductionDescriptionContainer}>
-          <div style={{...Styles.introductionDescriptionItem,...Styles.marginRightMed}}>
-            <div style={{ height: "220px" }}>
+          <div
+            style={{
+              ...Styles.introductionDescriptionItem,
+              ...Styles.marginRightMed,
+            }}
+          >
+            <div style={{ height: "10%" }}>
               <p style={Styles.introductionDescriptionText}>
                 Với sứ mệnh là cộng dồng triển khai Biove, chúng tôi sẽ đồng
                 hành với các bạn trên mọi chặng đường. Chiến dịch VN-Green đặt
@@ -28,7 +33,9 @@ export default class Introduction extends Component {
                 style={Styles.introductionImageStyle}
               ></img>
               <a href="#" style={Styles.introductionButton}>
-                <p style={Styles.introductionButtonText}>Link to báo Đồng Nai...</p>
+                <p style={Styles.introductionButtonText}>
+                  Link to báo Đồng Nai...
+                </p>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"
@@ -46,7 +53,7 @@ export default class Introduction extends Component {
             </div>
           </div>
           <div style={Styles.introductionDescriptionItem}>
-            <div style={{ height: "220px" }}>
+            <div style={{ height: "10%" }}>
               <p style={Styles.introductionDescriptionText}>
                 Chặng đường, mục tiêu xã hội,… của BIOVE Với sứ mệnh là cộng
                 dồng triển khai Biove, chúng tôi sẽ đồng hành với các bạn trên
@@ -74,9 +81,11 @@ export default class Introduction extends Component {
 
 const Styles = {
   introductionContainer: {
-    marginTop: "80px",
-    marginLeft: "125px",
-    marginRight:"125px"
+    marginTop: "7%",
+    marginLeft: "9%",
+    marginRight: "9%",
+    height:"100%",
+    marginBottom:"30%"
   },
   introductionTitle: {
     color: "#707070",
@@ -88,58 +97,57 @@ const Styles = {
     color: "black",
     fontSize: "70px",
     fontWeight: "500",
-    width: "700px",
+    width: "70%",
   },
   introductionDescriptionContainer: {
-    marginTop: "50px",
+    marginTop: "5%",
     display: "flex",
+   
   },
   introductionDescriptionItem: {
-    width: "100%",
+    width: "100%"
   },
   introductionDescriptionText: {
     fontSize: "18px",
     fontWeight: "500",
-    
   },
   introductionDescriptionLink: {
     color: "#4A90E2",
     fontSize: "18px",
     fontWeight: "500",
-    marginTop: "-10px",
-    display: "block",
+    marginTop: "-.8%",
     textDecoration: "none",
   },
   introductionDescriptionImageContainer: {
-    height: "400px",
+    height: "40%",
     backgroundColor: "#DEDEDE",
     overflow: "hidden",
-    position:"relative"
+    position: "relative",
+    marginTop:"20%"
   },
   introductionImageStyle: {
     width: "100%",
   },
-  introductionButton:{
-      backgroundColor:"white",
-      width:"230px",
-      height:"60px",
-      position:"absolute",
-      right:"0",
-      bottom:"0",
-      textDecoration:"none",
-      color:"#FF5200",
-      fontSize:"14px",
-      fontWeight:"500",
-      display:"flex",
-      alignItems:"center",
-      justifyContent:"center"
-    
+  introductionButton: {
+    backgroundColor: "white",
+    width: "45%",
+    height: "18%",
+    position: "absolute",
+    right: "0",
+    bottom: "0",
+    textDecoration: "none",
+    color: "#FF5200",
+    fontSize: "14px",
+    fontWeight: "500",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
   },
-  introductionButtonText:{
-    marginBottom:"0",
-    marginRight:"10px"
+  introductionButtonText: {
+    marginBottom: "0",
+    marginRight: "10px",
   },
-  marginRightMed:{
-    marginRight:"15px"
-  }
+  marginRightMed: {
+    marginRight: "15px",
+  },
 };

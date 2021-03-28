@@ -5,10 +5,10 @@ import Navbar from "../Components/Navbar";
 export default class Header extends Component {
   render() {
     return (
-      <div style={Styles.container}>
-        <div style={Styles.imageContainer}>
+      <div style={Styles.imageContainer}>
+        
           <img style={Styles.landingImage} src={landing} alt="landing image" />
-        </div>
+        
 
         <Navbar></Navbar>
         <div style={Styles.headerText}>
@@ -72,19 +72,24 @@ export default class Header extends Component {
 
 const Styles = {
   imageContainer: {
-    overflowX: "hidden",
+    overflow: "hidden",
     width: "100%",
-    position: "absolute",
-    zIndex: "-1",
+    position: "relative", 
   },
   landingImage: {
-    width: "120%",
+    width: "100em",
+    height:"auto",
+    position:"absolute",
+    left:'0',
+    right:'0',
+    top:"0",
+    zIndex:"-1"
   },
   headerText: {
     color: "white",
-    marginLeft: "140px",
-    marginTop: "80px",
-    width: "650px",
+    marginLeft: "10%",
+    marginTop: "7%",
+    width: "45%",
   },
   headerTextFirst: {
     fontSize: "24px",
@@ -98,7 +103,7 @@ const Styles = {
     display: "flex",
     alignItems: "center",
     marginTop: "40px",
-    marginLeft: "125px",
+    marginLeft: "9%",
   },
   actionText: {
     color: "white",
@@ -118,14 +123,14 @@ const Styles = {
     justifyContent: "center",
   },
   navbarSecondary: {
-    marginRight:"125px",
+    marginRight:"9%",
     height: "120px",
     backgroundColor: "white",
     marginTop: "80px",
     borderTopRightRadius: "20px",
     display: "flex",
     alignItems: "center",
-    paddingLeft: "125px",
+    paddingLeft: "9%",
   },
 
   navbarSecondaryItemText: {
@@ -144,7 +149,7 @@ const Styles = {
     height: "1px",
     backgroundColor: "#D8D8D8",
     transform: "rotate(-70deg)",
-    marginLeft: "60px",
-    marginRight: "30px",
+    marginLeft: "6%",
+    marginRight: "3%",
   },
 };

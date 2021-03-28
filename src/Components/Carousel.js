@@ -66,18 +66,18 @@ const Styles = {
     position:"relative"
   },
   carouselImageContainer: {
-    height: "475px",
     display: "flex",
-    marginLeft: "125px",
+    marginLeft: "9%",
     overflowX:'hidden'
   },
   carouselNavigation: {
-    width: "100px",
-    height: "60px",
+    width: "7.2%",
+    height: "10%",
     backgroundColor: "#DBAEAE",
     position:"absolute",
-    bottom:"220px",
-    marginLeft: "12px",
+    top:"50%",
+    transform:"translate(0,-50%)",
+    marginLeft:".9%",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
@@ -89,12 +89,12 @@ const Styles = {
     transform: "rotate(-70deg)",
   },
   carouselImageStyle: {
-    height: "100%",
-    marginRight: "20px",
+    width: "70%",
+    marginRight: "2%",
   },
   carouselIndicatorContainer:{
     marginTop:"20px",
-    marginLeft:"125px",
+    marginLeft:"9%",
     display:"flex",
     alignItems:"center"
   },
