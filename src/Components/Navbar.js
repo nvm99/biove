@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import avatarMenu from "../assets/avatarMenu.png";
 
 export default class Navbar extends Component {
+  state={isLogin:false}
   render() {
     return (
       <div style={Styles.paddingVertical}>
@@ -59,7 +60,7 @@ export default class Navbar extends Component {
                 >
                   <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
                 </svg>
-                <div class="dropdown">
+                {this.state.isLogin ? <div class="dropdown">
                   <a
                     style={Styles.dropdownProfile}
                     data-toggle="dropdown"
@@ -128,6 +129,9 @@ export default class Navbar extends Component {
                     </li>
                   </ul>
                 </div>
+  
+                :<a style={Styles.loginSignupText} href="#">Login/SignUp</a>}
+
               </div>
             </div>
           </div>
@@ -140,7 +144,13 @@ export default class Navbar extends Component {
 const Styles = {
   navItemText:{
     fontSize:"13px",
-
+  },
+  loginSignupText:{
+    textDecoration:"none",
+    fontSize:"13px",
+    color:"white",
+    marginBottom:"0",
+    marginLeft:"20px"
   },
   btnLanguage: {
     fontSize: "13px",
