@@ -2,25 +2,42 @@ import React, { Component } from "react";
 import carouselImage from "../assets/carouselImage.png";
 import carouselImage2 from "../assets/carouselImage2.png";
 
+
 export default class Carousel extends Component {
+  
+  state={className:""}
+  handleClickLeft=()=>{
+    this.setState({
+      className:"transformLeft"
+    })
+  }
+  handleClickRight=()=>{
+    this.setState({
+      className:"transformRight"
+    })
+  }
   render() {
     return (
       <div style={Styles.carouselContainer}>
         <div style={Styles.carouselImageContainer}>
+
           <img
             src={carouselImage}
             alt="carousel item 1"
             style={Styles.carouselImageStyle}
+            className={this.state.className}
           />
           <img
             src={carouselImage2}
             alt="carousel item 2"
             style={Styles.carouselImageStyle}
+            className={this.state.className}
           />
           <img
             src={carouselImage}
             alt="carousel item 3"
             style={Styles.carouselImageStyle}
+            className={this.state.className}
           />
         </div>
         <div style={Styles.carouselIndicatorContainer}>
@@ -36,6 +53,7 @@ export default class Carousel extends Component {
             fill="#4A4A4A"
             class="bi bi-chevron-left"
             viewBox="0 0 16 16"
+            onClick={this.handleClickRight}
           >
             <path
               fill-rule="evenodd"
@@ -50,6 +68,7 @@ export default class Carousel extends Component {
             fill="#4A4A4A"
             class="bi bi-chevron-right"
             viewBox="0 0 16 16"
+            onClick={this.handleClickLeft}
           >
             <path
               fill-rule="evenodd"
@@ -70,7 +89,7 @@ const Styles = {
     display: "flex",
     marginLeft: "9%",
     overflowX:'hidden',
-    transition:"all 10s"
+    transition:"all 2s"
     
   },
   carouselNavigation: {
@@ -94,7 +113,7 @@ const Styles = {
   carouselImageStyle: {
     width: "70%",
     marginRight: "2%",
-    
+    transition: 'transform 1s',
   },
   carouselIndicatorContainer:{
     marginTop:"20px",

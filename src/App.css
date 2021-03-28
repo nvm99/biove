@@ -22,3 +22,10 @@ html, body {
   input:focus{
     outline: 1px solid #d1d1d1; 
   }
+
+  .transformLeft{
+      transform: translateX(-103%);
+  }
+  .transformRight{
+    transform: translateX(0%);
+}
