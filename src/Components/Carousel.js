@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import carouselImage from "../assets/carouselImage.png";
+import carouselImage2 from "../assets/carouselImage2.png";
 
 export default class Carousel extends Component {
   render() {
@@ -12,7 +13,7 @@ export default class Carousel extends Component {
             style={Styles.carouselImageStyle}
           />
           <img
-            src={carouselImage}
+            src={carouselImage2}
             alt="carousel item 2"
             style={Styles.carouselImageStyle}
           />
@@ -68,7 +69,9 @@ const Styles = {
   carouselImageContainer: {
     display: "flex",
     marginLeft: "9%",
-    overflowX:'hidden'
+    overflowX:'hidden',
+    transition:"all 10s"
+    
   },
   carouselNavigation: {
     width: "7.2%",
@@ -91,6 +94,7 @@ const Styles = {
   carouselImageStyle: {
     width: "70%",
     marginRight: "2%",
+    
   },
   carouselIndicatorContainer:{
     marginTop:"20px",

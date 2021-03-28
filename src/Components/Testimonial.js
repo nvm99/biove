@@ -85,7 +85,7 @@ const Styles = {
   testimonialContainer: {
     backgroundColor: "#F8F8F8",
     width: "100%",
-    height: "100%",
+    height: "90vh",
     padding: "9%",
     display: "flex",
     justifyContent: "space-between",
@@ -97,7 +97,7 @@ const Styles = {
   },
   testimonialContainerRight: {
     display: "flex",
-    marginLeft: "auto",
+    marginLeft:"20%"
   },
   testimonialTitle: {
     fontSize: "14px",
@@ -126,8 +126,8 @@ const Styles = {
   },
   testimonialItem: {
     backgroundColor: "white",
-    width: "357px",
-    height: "90%",
+    width: "50%",
+    height: "100%",
     boxShadow: "0 1px 2px 0 rgba(0, 0, 0, 0.2)",
     padding: "5%",
     display: "flex",

@@ -77,7 +77,7 @@ const Styles = {
     position: "relative", 
   },
   landingImage: {
-    width: "100em",
+    width: "100%",
     height:"auto",
     position:"absolute",
     left:'0',
