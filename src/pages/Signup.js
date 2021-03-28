@@ -1,34 +1,45 @@
 import React, { Component } from "react";
 import Navbar from "../Components/Navbar";
-import firebase from "firebase/app";
-require('firebase/auth');
-var firebaseConfig = {
-    apiKey: "AIzaSyCsuyVBFxBacPt-kgGtnU7lzVcanEpMYfY",
-    authDomain: "biove-fbee4.firebaseapp.com",
-    projectId: "biove-fbee4",
-    storageBucket: "biove-fbee4.appspot.com",
-    messagingSenderId: "152663085070",
-    appId: "1:152663085070:web:fd2f506c492ae0cbf96c5f",
-    measurementId: "G-SEFHV9KE98"
-};
-firebase.initializeApp(firebaseConfig);
-const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
-export default class Login extends Component {
+export default class Signup extends Component {
+  days = [];
+  months = [];
+  years = [];
+  addDates = () => {
+    for (let i = 1; i <= 31; i++) {
+      this.days.push(i);
+    }
+    for (let i = 1; i <= 12; i++) {
+      this.months.push(i);
+    }
+    for (let i = 2021; i >= 1900; i--) {
+      this.years.push(i);
+    }
+  };
   render() {
+    this.addDates();
+    const selectDays = this.days.map((x) => (
+      <option value={"" + x}>{x}</option>
+    ));
+    const selectMonths = this.months.map((x) => (
+      <option value={"" + x}>{x}</option>
+    ));
+    const selectYears = this.years.map((x) => (
+      <option value={"" + x}>{x}</option>
+    ));
+
     return (
       <div>
         <div style={Styles.navbarContainer}>
           <Navbar />
         </div>
         <div style={Styles.loginContainer}>
-          <p style={Styles.signInText}>SIGN IN</p>
+          <p style={Styles.signInText}>Create Account</p>
           <div style={Styles.signInSocialNetworkContainer}>
             <button
               style={{
                 ...Styles.signInSocialNetworkButton,
                 ...Styles.signInFacebook,
               }}
-              
             >
               <svg
                 width="8"
@@ -44,20 +55,13 @@ export default class Login extends Component {
               </svg>
               <div style={Styles.verticalSeparator}></div>
               <p style={Styles.signInSocialNetworkText}>
-                Sign In with Facebook
+                Sign Up with Facebook
               </p>
             </button>
             <button
               style={{
                 ...Styles.signInSocialNetworkButton,
                 ...Styles.signInGoogle,
-              }}
-              onClick={()=>{
-                firebase.auth()
-                .signInWithPopup(googleAuthProvider)
-                .then((result) => {
-                    console.log(result)
-                });
               }}
             >
               <svg
@@ -74,7 +78,7 @@ export default class Login extends Component {
               </svg>
 
               <div style={Styles.verticalSeparator}></div>
-              <p style={Styles.signInSocialNetworkText}>Sign In with Google</p>
+              <p style={Styles.signInSocialNetworkText}>Sign Up with Google</p>
             </button>
           </div>
           <div style={Styles.horizontalSeparatorContainer}>
@@ -84,6 +88,33 @@ export default class Login extends Component {
           </div>
           <div style={Styles.formContainer}>
             <form style={Styles.form}>
+              <div style={Styles.inputNameContainer}>
+                <div style={Styles.inputName} class="mb-3">
+                  <label for="inputFirstName" class="form-label">
+                    First Name
+                  </label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="inputFirstName"
+                    aria-describedby="firstNameInput"
+                    placeholder="Enter first name"
+                  />
+                </div>
+                <div style={Styles.inputName} class="mb-3">
+                  <label for="inputLastName" class="form-label">
+                    Last Name
+                  </label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="inputLastName"
+                    aria-describedby="LastNameInput"
+                    placeholder="Enter last name"
+                  />
+                </div>
+              </div>
+
               <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">
                   Email
@@ -109,6 +140,23 @@ export default class Login extends Component {
                 />
                 <button style={Styles.showPasswordButton}>Show password</button>
               </div>
+              <div style={Styles.formSeparator}></div>
+
+              <label class="form-label">Date Of Birth</label>
+              <div style={Styles.dateOfBirthContainer}>
+                <select style={Styles.dateOfBirthSelect} class="form-select" aria-label="Day Select">
+                  <option disabled selected>Day</option>
+                  {selectDays}
+                </select>
+                <select style={Styles.dateOfBirthSelect} class="form-select" aria-label="Month Select">
+                  <option disabled selected>Month</option>
+                  {selectMonths}
+                </select>
+                <select style={Styles.dateOfBirthSelect} class="form-select" aria-label="Year Select">
+                  <option disabled selected>Year</option>
+                  {selectYears}
+                </select>
+              </div>
 
               <div style={Styles.formSeparator}></div>
               <div style={Styles.passwordCheckContainer}>
@@ -119,20 +167,25 @@ export default class Login extends Component {
                     id="exampleCheck1"
                   />
                   <label class="form-check-label" for="exampleCheck1">
-                    Remember me
+                    I have read and agree to the{" "}
+                    <a style={Styles.signUpLink} href="#">
+                      Terms and Conditions
+                    </a>
                   </label>
                 </div>
-                <button style={Styles.forgotPasswordButton}>Forgot Password?</button>
               </div>
 
               <div style={Styles.formSeparator}></div>
               <button type="submit" style={Styles.SignInSubmitButton}>
-                Sign In
+                Sign Up
               </button>
             </form>
           </div>
           <p style={Styles.signUpText}>
-            Don’t have an Account? <a style={Styles.signUpLink} href="#">Sign Up</a>
+            Already have an Account?{" "}
+            <a style={Styles.signUpLink} href="#">
+              Log in
+            </a>
           </p>
         </div>
       </div>
@@ -141,9 +194,9 @@ export default class Login extends Component {
 }
 
 const Styles = {
-  navbarContainer:{
+  navbarContainer: {
     width: "100%",
-    backgroundColor: "#3A3232"
+    backgroundColor: "#3A3232",
   },
   signInText: {
     fontSize: "70px",
@@ -231,33 +284,40 @@ const Styles = {
     color: "#4A90E2",
     fontSize: "12px",
   },
-  passwordCheckContainer:{
-    display:"flex",
-    alignItems:"center"
+  passwordCheckContainer: {
+    display: "flex",
+    alignItems: "center",
   },
-  forgotPasswordButton:{
-    marginBottom:"1rem",
+  SignInSubmitButton: {
     border: "none",
-    backgroundColor: "white",
+    color: "white",
+    backgroundColor: "#FF5200",
+    width: "544px",
+    height: "50px",
+    fontWeight: "500",
+    fontSize: "14px",
+  },
+  signUpText: {
+    display: "block",
+    marginTop: "30px",
+    marginBottom: "10%",
+  },
+  signUpLink: {
+    textDecoration: "none",
     color: "#4A90E2",
-    marginLeft:"auto"
   },
-  SignInSubmitButton:{
-    border:"none",
-    color:"white",
-    backgroundColor:"#FF5200",
-    width:"544px",
-    height:"50px",
-    fontWeight:"500",
-    fontSize:"14px"
+  inputNameContainer: {
+    display: "flex",
+    justifyContent: "space-between",
   },
-  signUpText:{
-    display:"block",
-    marginTop:"30px",
-    marginBottom:"10%"
+  inputName: {
+    width: "262px",
   },
-  signUpLink:{
-    textDecoration:"none",
-    color:"#4A90E2"
+  dateOfBirthContainer: {
+    display: "flex",
+    justifyContent: "space-between",
+  },
+  dateOfBirthSelect:{
+      width:"170px"
   }
 };
