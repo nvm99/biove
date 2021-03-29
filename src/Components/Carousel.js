@@ -2,138 +2,45 @@ import React, { Component } from "react";
 import carouselImage from "../assets/carouselImage.png";
 import carouselImage2 from "../assets/carouselImage2.png";
 
-
 export default class Carousel extends Component {
-  
-  state={className:""}
-  handleClickLeft=()=>{
-    this.setState({
-      className:"transformLeft"
-    })
-  }
-  handleClickRight=()=>{
-    this.setState({
-      className:"transformRight"
-    })
-  }
   render() {
     return (
-      <div style={Styles.carouselContainer}>
-        <div style={Styles.carouselImageContainer}>
-
-          <img
-            src={carouselImage}
-            alt="carousel item 1"
-            style={Styles.carouselImageStyle}
-            className={this.state.className}
-          />
-          <img
-            src={carouselImage2}
-            alt="carousel item 2"
-            style={Styles.carouselImageStyle}
-            className={this.state.className}
-          />
-          <img
-            src={carouselImage}
-            alt="carousel item 3"
-            style={Styles.carouselImageStyle}
-            className={this.state.className}
-          />
-        </div>
-        <div style={Styles.carouselIndicatorContainer}>
-            <div style={Styles.carouselIndicatorActive}></div>
-            <div style={{...Styles.carouselIndicatorInactive,...Styles.marginLeftMed}}></div>
-            <div style={{...Styles.carouselIndicatorInactive,...Styles.marginLeftMed}}></div>
+      
+      <div className="carouselContainer">
+        <div className="carousel" data-flickity='{ "wrapAround": true }'>
+          <div className="carousel-cell">
+            <img src={carouselImage} alt="carousel item 1" />
+          </div>
+          <div className="carousel-cell"><img src={carouselImage2} alt="carousel item 2" /></div>
+          <div className="carousel-cell"><img src={carouselImage} alt="carousel item 1" /></div>
         </div>
         <div style={Styles.carouselNavigation}>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="17"
-            height="17"
-            fill="#4A4A4A"
-            class="bi bi-chevron-left"
-            viewBox="0 0 16 16"
-            onClick={this.handleClickRight}
-          >
-            <path
-              fill-rule="evenodd"
-              d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"
-            />
-          </svg>
           <div style={Styles.carouselNavigationSeparator}></div>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="17"
-            height="17"
-            fill="#4A4A4A"
-            class="bi bi-chevron-right"
-            viewBox="0 0 16 16"
-            onClick={this.handleClickLeft}
-          >
-            <path
-              fill-rule="evenodd"
-              d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"
-            />
-          </svg>
         </div>
       </div>
+      
     );
   }
 }
 
 const Styles = {
-  carouselContainer: {
-    position:"relative"
-  },
-  carouselImageContainer: {
-    display: "flex",
-    marginLeft: "9%",
-    overflowX:'hidden',
-    transition:"all 2s"
-    
-  },
   carouselNavigation: {
     width: "7.2%",
     height: "10%",
     backgroundColor: "#DBAEAE",
-    position:"absolute",
-    top:"50%",
-    transform:"translate(0,-50%)",
-    marginLeft:".9%",
+    position: "absolute",
+    top: "50%",
+    transform: "translate(0,-50%)",
+    marginLeft: ".9%",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
+    zIndex: "0",
   },
-  carouselNavigationSeparator:{
+  carouselNavigationSeparator: {
     width: "40px",
     height: "1px",
     backgroundColor: "#D8D8D8",
     transform: "rotate(-70deg)",
   },
-  carouselImageStyle: {
-    width: "70%",
-    marginRight: "2%",
-    transition: 'transform 1s',
-  },
-  carouselIndicatorContainer:{
-    marginTop:"20px",
-    marginLeft:"9%",
-    display:"flex",
-    alignItems:"center"
-  },
-  carouselIndicatorActive:{
-      backgroundColor:"#FF5200",
-      width:"25px",
-      height:"10px",
-      borderRadius:"5px"
-  },
-  carouselIndicatorInactive:{
-    backgroundColor:"#D8D8D8",
-    width:"10px",
-    height:"10px",
-    borderRadius:"50%",
-  },
-  marginLeftMed:{
-      marginLeft:"10px"
-  }
 };
