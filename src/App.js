@@ -10,15 +10,16 @@ import Signup from "./pages/Signup"
 function App() {
   return (
     <div className="App">
-      <Signup/>
-      {/* <Slider></Slider> */}
+      {/* <Signup/> */}
+      <Slider></Slider>
+      <Introduction></Introduction>
      {/* <Header></Header> 
     <Slider></Slider>
      <Introduction></Introduction>
      <Heatmap></Heatmap>
      <Testimonial></Testimonial>
      <Footer></Footer> */}
-     <Footer></Footer>
+     {/* <Footer></Footer> */}
     </div>
   );
 }

@@ -30,6 +30,7 @@ const Styles = {
   sliderContainer: {
     backgroundColor: "white",
     paddingTop: "7%",
+    paddingBottom: "7%"
   },
   sliderTextContainer: {
     marginLeft: "9%",
