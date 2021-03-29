@@ -29,9 +29,6 @@ export default class Signup extends Component {
 
     return (
       <div>
-        <div style={Styles.navbarContainer}>
-          <Navbar />
-        </div>
         <div style={Styles.loginContainer}>
           <p style={Styles.signInText}>Create Account</p>
           <div style={Styles.signInSocialNetworkContainer}>

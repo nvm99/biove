@@ -6,11 +6,7 @@ export default class Header extends Component {
   render() {
     return (
       <div style={Styles.imageContainer}>
-        
-          <img style={Styles.landingImage} src={landing} alt="landing image" />
-        
-
-        <Navbar></Navbar>
+        <img style={Styles.landingImage} src={landing} alt="landing image" />
         <div style={Styles.headerText}>
           <p style={Styles.headerTextFirst}>Welcome to BIOVE foundation</p>
           <p style={Styles.headerTextSecond}>
@@ -64,7 +60,7 @@ export default class Header extends Component {
           </div>
         </div>
 
-        
+
       </div>
     );
   }
@@ -74,16 +70,16 @@ const Styles = {
   imageContainer: {
     overflow: "hidden",
     width: "100%",
-    position: "relative", 
+    position: "relative",
   },
   landingImage: {
     width: "110%",
-    height:"auto",
-    position:"absolute",
-    left:'0',
-    right:'0',
-    top:"0",
-    zIndex:"-1"
+    height: "auto",
+    position: "absolute",
+    left: '0',
+    right: '0',
+    top: "0",
+    zIndex: "-1"
   },
   headerText: {
     color: "white",
@@ -123,7 +119,7 @@ const Styles = {
     justifyContent: "center",
   },
   navbarSecondary: {
-    marginRight:"9%",
+    marginRight: "9%",
     height: "120px",
     backgroundColor: "white",
     marginTop: "80px",

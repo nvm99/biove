@@ -2,7 +2,14 @@ import React, { Component } from "react";
 import avatarMenu from "../assets/avatarMenu.png";
 
 export default class Navbar extends Component {
-  state={isLogin:false}
+  constructor(props) {
+    super(props);
+    if (localStorage.getItem("token")) {
+      this.state = { isLogin: true };
+    } else {
+      this.state = { isLogin: false };
+    }
+  }
   render() {
     return (
       <div style={Styles.paddingVertical}>
@@ -27,19 +34,22 @@ export default class Navbar extends Component {
                 class="ms-auto align-items-center navbar-nav"
                 style={Styles.marginRightULg}
               >
-                <a style={Styles.navItemText} class="nav-link active" aria-current="page" href="#">
+                 <a style={{ ...Styles.marginLeftSm, ...Styles.navItemText }} class="nav-link active" aria-current="page" 
+                 onClick={()=>{
+                   this.props.setPage('home')
+                 }}>
                   Home
                 </a>
-                <a style={{...Styles.marginLeftSm,...Styles.navItemText}} class="nav-link active" aria-current="page" href="#">
+                <a style={{ ...Styles.marginLeftSm, ...Styles.navItemText }} class="nav-link active" aria-current="page" href="#">
                   Planting
                 </a>
-                <a style={{...Styles.marginLeftSm,...Styles.navItemText}} class="nav-link active" aria-current="page" href="#">
+                <a style={{ ...Styles.marginLeftSm, ...Styles.navItemText }} class="nav-link active" aria-current="page" href="#">
                   Biomap
                 </a>
-                <a style={{...Styles.marginLeftSm,...Styles.navItemText}} class="nav-link active" aria-current="page" href="#">
+                <a style={{ ...Styles.marginLeftSm, ...Styles.navItemText }} class="nav-link active" aria-current="page" href="#">
                   Biove Angel
                 </a>
-                <a style={{...Styles.marginLeftSm,...Styles.navItemText}} class="nav-link active" aria-current="page" href="#">
+                <a style={{ ...Styles.marginLeftSm, ...Styles.navItemText }} class="nav-link active" aria-current="page" href="#">
                   About Us
                 </a>
                 <a
@@ -129,9 +139,11 @@ export default class Navbar extends Component {
                     </li>
                   </ul>
                 </div>
-  
-                :<a style={Styles.loginSignupText} href="#">Login/SignUp</a>}
 
+                  : <a style={Styles.loginSignupText} class="nav-link active" aria-current="page"
+                    onClick={() => {
+                      this.props.setPage('login')
+                    }}>Login/SignUp</a>}
               </div>
             </div>
           </div>
@@ -142,15 +154,15 @@ export default class Navbar extends Component {
 }
 
 const Styles = {
-  navItemText:{
-    fontSize:"13px",
+  navItemText: {
+    fontSize: "13px",
   },
-  loginSignupText:{
-    textDecoration:"none",
-    fontSize:"13px",
-    color:"white",
-    marginBottom:"0",
-    marginLeft:"20px"
+  loginSignupText: {
+    textDecoration: "none",
+    fontSize: "13px",
+    color: "white",
+    marginBottom: "0",
+    marginLeft: "20px"
   },
   btnLanguage: {
     fontSize: "13px",

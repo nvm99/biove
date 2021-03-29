@@ -17,9 +17,6 @@ export default class Login extends Component {
   render() {
     return (
       <div>
-        <div style={Styles.navbarContainer}>
-          <Navbar />
-        </div>
         <div style={Styles.loginContainer}>
           <p style={Styles.signInText}>SIGN IN</p>
           <div style={Styles.signInSocialNetworkContainer}>
@@ -132,7 +129,11 @@ export default class Login extends Component {
             </form>
           </div>
           <p style={Styles.signUpText}>
-            Don’t have an Account? <a style={Styles.signUpLink} href="#">Sign Up</a>
+            Don’t have an Account? <a style={Styles.signUpLink} 
+            onClick={()=>{
+              this.props.setPage('signup')
+            }}
+            >Sign Up</a>
           </p>
         </div>
       </div>
