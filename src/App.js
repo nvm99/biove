@@ -32,13 +32,13 @@ export default class componentName extends Component {
       case 'login':
         return (
           <>
-            <Login setPage={this.setPage}/>
+            <Login setPage={this.setPage} />
           </>
         )
       case 'signup':
         return (
           <>
-            <Signup setPage={this.setPage}/>
+            <Signup setPage={this.setPage} />
           </>
         )
       default:
@@ -53,9 +53,10 @@ export default class componentName extends Component {
   }
   render() {
     return (
-      <div className="App"><div style={Styles.navbarContainer}>
-        <Navbar style={Styles.navbarContainer} setPage={this.setPage}/>
-      </div>
+      <div className="App">
+        <div style={this.state.page == 'home'?{width: "100%",position:"absolute",zIndex:"10"}:Styles.navbarContainer}>
+          <Navbar  setPage={this.setPage}/>
+        </div>
         {this.renderPage()}
         <Footer />
       </div>
