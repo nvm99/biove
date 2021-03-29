@@ -9,6 +9,7 @@ import Footer from "./Components/Footer";
 import Login from "./pages/Login"
 import Signup from "./pages/Signup"
 import Navbar from "./Components/Navbar"
+import Profile from "./pages/Profile"
 export default class componentName extends Component {
   constructor(props) {
     super(props);
@@ -22,11 +23,13 @@ export default class componentName extends Component {
       case 'home':
         return (
           <>
-            <Header></Header>
+          <Slider></Slider>
+            {/* <Header></Header>
             <Slider></Slider>
             <Introduction></Introduction>
             <Heatmap></Heatmap>
-            <Testimonial></Testimonial>
+            <Testimonial></Testimonial> */}
+
           </>
         )
       case 'login':

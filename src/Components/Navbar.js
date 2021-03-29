@@ -156,13 +156,15 @@ export default class Navbar extends Component {
 const Styles = {
   navItemText: {
     fontSize: "13px",
+    cursor:"pointer"
   },
   loginSignupText: {
     textDecoration: "none",
     fontSize: "13px",
     color: "white",
     marginBottom: "0",
-    marginLeft: "20px"
+    marginLeft: "20px",
+    cursor:"pointer"
   },
   btnLanguage: {
     fontSize: "13px",

@@ -41,13 +41,9 @@ input:focus {
   counter-increment: carousel-cell;
   transform: translateX(-40.5%);
 }
-.flickity-prev-next-button.next {
-  left: 63px;
-  z-index: 1;
-}
-.flickity-prev-next-button.previous {
-  z-index: 1;
-  left: 17px;
+.flickity-prev-next-button{
+  opacity: 0;
+  display:none;
 }
 .flickity-page-dots {
   width: 8%;
