@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 
-export default class HorizontalNav extends Component {
+export default class VerticalNav extends Component {
   render() {
     return (
-      <div style={Styles.horizontalNavContainer}>
-        <div style={Styles.horizontalNavItem}>
-          <div style={Styles.horizontalNavItemIconContainer}>
+      <div style={Styles.verticalNavContainer}>
+        <a href="#" style={Styles.verticalNavItem}>
+          <div style={Styles.verticalNavItemIconContainer}>
             <svg
               width="18"
               height="18"
@@ -26,10 +26,10 @@ export default class HorizontalNav extends Component {
             </svg>
           </div>
 
-          <p style={Styles.horizontalNavItemText}>Profile</p>
-        </div>
-        <div style={Styles.horizontalNavItem}>
-          <div style={Styles.horizontalNavItemIconContainer}>
+          <p style={Styles.verticalNavItemText}>Profile</p>
+        </a>
+        <a href="#" style={Styles.verticalNavItem}>
+          <div style={Styles.verticalNavItemIconContainer}>
             <svg
               width="16"
               height="9"
@@ -50,11 +50,11 @@ export default class HorizontalNav extends Component {
             </svg>
           </div>
 
-          <p style={Styles.horizontalNavItemText}>My campaign</p>
-        </div>
+          <p style={Styles.verticalNavItemText}>My campaign</p>
+        </a>
 
-        <div style={Styles.horizontalNavItem}>
-          <div style={Styles.horizontalNavItemIconContainer}>
+        <a href="#" style={Styles.verticalNavItem}>
+          <div style={Styles.verticalNavItemIconContainer}>
             <svg
               width="16"
               height="14"
@@ -70,11 +70,11 @@ export default class HorizontalNav extends Component {
               />
             </svg>
           </div>
-          <p style={Styles.horizontalNavItemText}>Messages</p>
-        </div>
+          <p style={Styles.verticalNavItemText}>Messages</p>
+        </a>
 
-        <div style={Styles.horizontalNavItem}>
-          <div style={Styles.horizontalNavItemIconContainer}>
+        <a href="#" style={Styles.verticalNavItem}>
+          <div style={Styles.verticalNavItemIconContainer}>
             <svg
               width="12"
               height="16"
@@ -96,10 +96,10 @@ export default class HorizontalNav extends Component {
               />
             </svg>
           </div>
-          <p style={Styles.horizontalNavItemText}>Visited</p>
-        </div>
-        <div style={Styles.horizontalNavItem}>
-          <div style={Styles.horizontalNavItemIconContainer}>
+          <p style={Styles.verticalNavItemText}>Visited</p>
+        </a>
+        <a href="#" style={Styles.verticalNavItem}>
+          <div style={Styles.verticalNavItemIconContainer}>
             <svg
               width="16"
               height="15"
@@ -115,10 +115,10 @@ export default class HorizontalNav extends Component {
               />
             </svg>
           </div>
-          <p style={Styles.horizontalNavItemText}>My Wishlist</p>
-        </div>
-        <div style={Styles.horizontalNavItem}>
-          <div style={Styles.horizontalNavItemIconContainer}>
+          <p style={Styles.verticalNavItemText}>My Wishlist</p>
+        </a>
+        <a href="#" style={Styles.verticalNavItem}>
+          <div style={Styles.verticalNavItemIconContainer}>
             <svg
               width="16"
               height="16"
@@ -134,10 +134,10 @@ export default class HorizontalNav extends Component {
               />
             </svg>
           </div>
-          <p style={Styles.horizontalNavItemText}>Reviews</p>
-        </div>
-        <div style={Styles.horizontalNavItem}>
-          <div style={Styles.horizontalNavItemIconContainer}>
+          <p style={Styles.verticalNavItemText}>Reviews</p>
+        </a>
+        <a href="#" style={Styles.verticalNavItem}>
+          <div style={Styles.verticalNavItemIconContainer}>
             <svg
               width="11"
               height="16"
@@ -153,10 +153,10 @@ export default class HorizontalNav extends Component {
               />
             </svg>
           </div>
-          <p style={Styles.horizontalNavItemText}>Rewards</p>
-        </div>
-        <div style={{...Styles.horizontalNavItem,...Styles.HorizontalNavLastItem}}>
-          <div style={Styles.horizontalNavItemIconContainer}>
+          <p style={Styles.verticalNavItemText}>Rewards</p>
+        </a>
+        <a href="#" style={{...Styles.verticalNavItem,...Styles.verticalNavLastItem}}>
+          <div style={Styles.verticalNavItemIconContainer}>
             <svg
               width="16"
               height="12"
@@ -174,31 +174,32 @@ export default class HorizontalNav extends Component {
               />
             </svg>
           </div>
-          <p style={Styles.horizontalNavItemText}>Log out</p>
-        </div>
+          <p style={Styles.verticalNavItemText}>Log out</p>
+        </a>
       </div>
     );
   }
 }
 const Styles = {
-  horizontalNavItem: {
+  verticalNavItem: {
     display: "flex",
     alignItems: "center",
-    marginBottom:"25px"
+    marginBottom:"25px",
+    textDecoration:"none"
   },
-  horizontalNavItemText: {
+  verticalNavItemText: {
     fontSize: "14px",
     fontWeight:"500",
     color: "#3B3B3B",
     marginBottom: "0"
   },
-  horizontalNavItemIconContainer: {
+  verticalNavItemIconContainer: {
     width: "50px",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
   },
-  HorizontalNavLastItem:{
+  verticalNavLastItem:{
       marginBottom:"0"
   }
 };

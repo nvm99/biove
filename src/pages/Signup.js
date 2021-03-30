@@ -96,6 +96,7 @@ export default class Signup extends Component {
                     id="inputFirstName"
                     aria-describedby="firstNameInput"
                     placeholder="Enter first name"
+                
                   />
                 </div>
                 <div style={Styles.inputName} class="mb-3">
