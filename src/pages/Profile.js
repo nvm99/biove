@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import ProfileComponent from "../Components/ProfileComponent";
+import MyCampaignComponent from "../Components/MyCampaignComponent";
 import VerticalNav from "../Components/VerticalNav";
 
 export default class Profile extends Component {
@@ -13,6 +14,9 @@ export default class Profile extends Component {
           <ProfileComponent></ProfileComponent>
         </div>
       </div>
+      // <div>
+      //   <MyCampaignComponent></MyCampaignComponent>
+      // </div>
     );
   }
 }
