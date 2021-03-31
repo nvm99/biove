@@ -10,7 +10,6 @@ export default class Carousel extends Component {
   componentDidMount=()=>{
     this.rightNavBtn=document.querySelector(".next")
     this.leftNavBtn=document.querySelector(".previous")
-    
   }
   handleRightNavBtnClick=()=>{
     this.rightNavBtn.click()
