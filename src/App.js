@@ -23,12 +23,12 @@ export default class componentName extends Component {
       case 'home':
         return (
           <>
-          <Slider></Slider>
-            {/* <Header></Header>
+            {/* <Slider></Slider> */}
+            <Header></Header>
             <Slider></Slider>
             <Introduction></Introduction>
             <Heatmap></Heatmap>
-            <Testimonial></Testimonial> */}
+            <Testimonial></Testimonial>
 
           </>
         )
@@ -57,8 +57,8 @@ export default class componentName extends Component {
   render() {
     return (
       <div className="App">
-        <div style={this.state.page == 'home'?{width: "100%",position:"absolute",zIndex:"10"}:Styles.navbarContainer}>
-          <Navbar  setPage={this.setPage}/>
+        <div style={this.state.page == 'home' ? { width: "100%", position: "absolute", zIndex: "10" } : Styles.navbarContainer}>
+          <Navbar setPage={this.setPage} />
         </div>
         {this.renderPage()}
         <Footer />

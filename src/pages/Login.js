@@ -1,18 +1,20 @@
 import React, { Component } from "react";
 import Navbar from "../Components/Navbar";
 import firebase from "firebase/app";
+import * as signin_api from "../apis/signin.api";
 require('firebase/auth');
 var firebaseConfig = {
-    apiKey: "AIzaSyCsuyVBFxBacPt-kgGtnU7lzVcanEpMYfY",
-    authDomain: "biove-fbee4.firebaseapp.com",
-    projectId: "biove-fbee4",
-    storageBucket: "biove-fbee4.appspot.com",
-    messagingSenderId: "152663085070",
-    appId: "1:152663085070:web:fd2f506c492ae0cbf96c5f",
-    measurementId: "G-SEFHV9KE98"
+  apiKey: "AIzaSyCsuyVBFxBacPt-kgGtnU7lzVcanEpMYfY",
+  authDomain: "biove-fbee4.firebaseapp.com",
+  projectId: "biove-fbee4",
+  storageBucket: "biove-fbee4.appspot.com",
+  messagingSenderId: "152663085070",
+  appId: "1:152663085070:web:fd2f506c492ae0cbf96c5f",
+  measurementId: "G-SEFHV9KE98"
 };
 firebase.initializeApp(firebaseConfig);
 const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
+const facebookAuthprovider = new firebase.auth.FacebookAuthProvider();
 export default class Login extends Component {
   render() {
     return (
@@ -25,7 +27,39 @@ export default class Login extends Component {
                 ...Styles.signInSocialNetworkButton,
                 ...Styles.signInFacebook,
               }}
-              
+              onClick={() => {
+                firebase
+                  .auth()
+                  .signInWithPopup(facebookAuthprovider)
+                  .then((result) => {
+                    firebase.auth().currentUser.getIdToken(true).then((idToken) => {
+                      signin_api.login_firebase(idToken).then((data) => {
+                        if(data.token){
+                          localStorage.setItem("token",data.token)
+                        }else{
+                          alert(data.message)
+                        }
+                      })
+                    }).catch((error) => {
+                      // Handle error
+                    });
+                  })
+                  .catch((error) => {
+                    if (error.email) {
+                      firebase.auth().currentUser.getIdToken(true).then((idToken) => {
+                        signin_api.login_firebase(idToken).then((data) => {
+                          if(data.token){
+                            localStorage.setItem("token",data.token)
+                          }else{
+                            alert(data.message)
+                          }
+                        })  
+                      }).catch((error) => {
+                        // Handle error
+                      });
+                    }
+                  });
+              }}
             >
               <svg
                 width="8"
@@ -49,12 +83,24 @@ export default class Login extends Component {
                 ...Styles.signInSocialNetworkButton,
                 ...Styles.signInGoogle,
               }}
-              onClick={()=>{
+              onClick={() => {
                 firebase.auth()
-                .signInWithPopup(googleAuthProvider)
-                .then((result) => {
-                    console.log(result)
-                });
+                  .signInWithPopup(googleAuthProvider)
+                  .then((result) => {
+                    firebase.auth().currentUser.getIdToken(true).then((idToken) => {
+                      signin_api.login_firebase(idToken).then((data) => {
+                        if(data.token){
+                          localStorage.setItem("token",data.token)
+                        }else{
+                          alert(data.message)
+                        }
+                      })
+                    }).catch(function (error) {
+                      // Handle error
+                    });
+
+                  })
+
               }}
             >
               <svg
@@ -129,10 +175,10 @@ export default class Login extends Component {
             </form>
           </div>
           <p style={Styles.signUpText}>
-            Don’t have an Account? <a style={Styles.signUpLink} 
-            onClick={()=>{
-              this.props.setPage('signup')
-            }}
+            Don’t have an Account? <a style={Styles.signUpLink}
+              onClick={() => {
+                this.props.setPage('signup')
+              }}
             >Sign Up</a>
           </p>
         </div>
@@ -142,7 +188,7 @@ export default class Login extends Component {
 }
 
 const Styles = {
-  navbarContainer:{
+  navbarContainer: {
     width: "100%",
     backgroundColor: "#3A3232"
   },
@@ -232,33 +278,33 @@ const Styles = {
     color: "#4A90E2",
     fontSize: "12px",
   },
-  passwordCheckContainer:{
-    display:"flex",
-    alignItems:"center"
+  passwordCheckContainer: {
+    display: "flex",
+    alignItems: "center"
   },
-  forgotPasswordButton:{
-    marginBottom:"1rem",
+  forgotPasswordButton: {
+    marginBottom: "1rem",
     border: "none",
     backgroundColor: "white",
     color: "#4A90E2",
-    marginLeft:"auto"
+    marginLeft: "auto"
   },
-  SignInSubmitButton:{
-    border:"none",
-    color:"white",
-    backgroundColor:"#FF5200",
-    width:"544px",
-    height:"50px",
-    fontWeight:"500",
-    fontSize:"14px"
+  SignInSubmitButton: {
+    border: "none",
+    color: "white",
+    backgroundColor: "#FF5200",
+    width: "544px",
+    height: "50px",
+    fontWeight: "500",
+    fontSize: "14px"
   },
-  signUpText:{
-    display:"block",
-    marginTop:"30px",
-    marginBottom:"10%"
+  signUpText: {
+    display: "block",
+    marginTop: "30px",
+    marginBottom: "10%"
   },
-  signUpLink:{
-    textDecoration:"none",
-    color:"#4A90E2"
+  signUpLink: {
+    textDecoration: "none",
+    color: "#4A90E2"
   }
 };

@@ -31,7 +31,7 @@ export default class Signup extends Component {
       <div>
         <div style={Styles.loginContainer}>
           <p style={Styles.signInText}>Create Account</p>
-          <div style={Styles.signInSocialNetworkContainer}>
+          {/* <div style={Styles.signInSocialNetworkContainer}>
             <button
               style={{
                 ...Styles.signInSocialNetworkButton,
@@ -77,12 +77,12 @@ export default class Signup extends Component {
               <div style={Styles.verticalSeparator}></div>
               <p style={Styles.signInSocialNetworkText}>Sign Up with Google</p>
             </button>
-          </div>
-          <div style={Styles.horizontalSeparatorContainer}>
+          </div> */}
+          {/* <div style={Styles.horizontalSeparatorContainer}>
             <div style={Styles.horizontalSeparator}></div>
             <p style={Styles.horizontalSeparatorText}>OR</p>
             <div style={Styles.horizontalSeparator}></div>
-          </div>
+          </div> */}
           <div style={Styles.formContainer}>
             <form style={Styles.form}>
               <div style={Styles.inputNameContainer}>
