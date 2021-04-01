@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import avatarMenu from "../assets/avatarMenu.png";
-
-export default class Navbar extends Component {
+import { NavLink } from "react-router-dom";
+class Navbar extends Component {
   constructor(props) {
     super(props);
     if (localStorage.getItem("token")) {
@@ -10,14 +10,17 @@ export default class Navbar extends Component {
       this.state = { isLogin: false };
     }
   }
+  
   render() {
     return (
       <div style={Styles.paddingVertical}>
         <nav class="navbar navbar-expand-lg navbar-dark">
-          <div class="container-fluid" >
-            <a class="navbar-brand" href="#" style={Styles.marginLeftMed}>
-              BIOVE
-            </a>
+          <div class="container-fluid">
+            <NavLink to="/">
+              <a class="navbar-brand" href="#" style={Styles.marginLeftMed}>
+                BIOVE
+              </a>
+            </NavLink>
             <button
               class="navbar-toggler"
               type="button"
@@ -34,22 +37,45 @@ export default class Navbar extends Component {
                 class="ms-auto align-items-center navbar-nav"
                 style={Styles.marginRightULg}
               >
-                 <a style={{ ...Styles.marginLeftSm, ...Styles.navItemText }} class="nav-link active" aria-current="page" 
-                 onClick={()=>{
-                   this.props.setPage('home')
-                 }}>
-                  Home
-                </a>
-                <a style={{ ...Styles.marginLeftSm, ...Styles.navItemText }} class="nav-link active" aria-current="page" href="#">
+                <NavLink to="/">
+                  <a
+                    style={{ ...Styles.marginLeftSm, ...Styles.navItemText }}
+                    class="nav-link active"
+                    aria-current="page"
+                  >
+                    Home
+                  </a>
+                </NavLink>
+                <a
+                  style={{ ...Styles.marginLeftSm, ...Styles.navItemText }}
+                  class="nav-link active"
+                  aria-current="page"
+                  href="#"
+                >
                   Planting
                 </a>
-                <a style={{ ...Styles.marginLeftSm, ...Styles.navItemText }} class="nav-link active" aria-current="page" href="#">
+                <a
+                  style={{ ...Styles.marginLeftSm, ...Styles.navItemText }}
+                  class="nav-link active"
+                  aria-current="page"
+                  href="#"
+                >
                   Biomap
                 </a>
-                <a style={{ ...Styles.marginLeftSm, ...Styles.navItemText }} class="nav-link active" aria-current="page" href="#">
+                <a
+                  style={{ ...Styles.marginLeftSm, ...Styles.navItemText }}
+                  class="nav-link active"
+                  aria-current="page"
+                  href="#"
+                >
                   Biove Angel
                 </a>
-                <a style={{ ...Styles.marginLeftSm, ...Styles.navItemText }} class="nav-link active" aria-current="page" href="#">
+                <a
+                  style={{ ...Styles.marginLeftSm, ...Styles.navItemText }}
+                  class="nav-link active"
+                  aria-current="page"
+                  href="#"
+                >
                   About Us
                 </a>
                 <a
@@ -70,80 +96,90 @@ export default class Navbar extends Component {
                 >
                   <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
                 </svg>
-                {this.state.isLogin ? <div class="dropdown">
-                  <a
-                    style={Styles.dropdownProfile}
-                    data-toggle="dropdown"
-                    href="#"
-                    role="button"
-                    id="dropdownMenuLink"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
-                  >
-                    <div
-                      style={{
-                        ...Styles.avatarContainer,
-                        ...Styles.marginLeftMed,
-                      }}
+                {this.state.isLogin ? (
+                  <div class="dropdown">
+                    <a
+                      style={Styles.dropdownProfile}
+                      data-toggle="dropdown"
+                      href="#"
+                      role="button"
+                      id="dropdownMenuLink"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
                     >
-                      <img
-                        style={Styles.avatarStyle}
-                        src={avatarMenu}
-                        alt="avatar Menu"
-                      ></img>
-                    </div>
-                    <svg
-                      style={Styles.marginLeftSm}
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="15"
-                      height="15"
-                      fill="white"
-                      class="bi bi-chevron-down"
-                      viewBox="0 0 16 16"
+                      <div
+                        style={{
+                          ...Styles.avatarContainer,
+                          ...Styles.marginLeftMed,
+                        }}
+                      >
+                        <img
+                          style={Styles.avatarStyle}
+                          src={avatarMenu}
+                          alt="avatar Menu"
+                        ></img>
+                      </div>
+                      <svg
+                        style={Styles.marginLeftSm}
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="15"
+                        height="15"
+                        fill="white"
+                        class="bi bi-chevron-down"
+                        viewBox="0 0 16 16"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"
+                        />
+                      </svg>
+                    </a>
+                    <ul
+                      class="dropdown-menu"
+                      aria-labelledby="dropdownMenuLink"
                     >
-                      <path
-                        fill-rule="evenodd"
-                        d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"
-                      />
-                    </svg>
-                  </a>
-                  <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    <li>
-                      <a class="dropdown-item" href="#">
-                        Profile
-                      </a>
-                    </li>
-                    <li>
-                      <hr class="dropdown-divider" />
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">
-                        Your trees
-                      </a>
-                    </li>
-                    <li>
-                      <hr class="dropdown-divider" />
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">
-                        Notifications
-                      </a>
-                    </li>
-                    <li>
-                      <hr class="dropdown-divider" />
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">
-                        Log out
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-
-                  : <a style={Styles.loginSignupText} class="nav-link active" aria-current="page"
-                    onClick={() => {
-                      this.props.setPage('login')
-                    }}>Login/SignUp</a>}
+                      <li>
+                        <a class="dropdown-item" href="#">
+                          Profile
+                        </a>
+                      </li>
+                      <li>
+                        <hr class="dropdown-divider" />
+                      </li>
+                      <li>
+                        <a class="dropdown-item" href="#">
+                          Your trees
+                        </a>
+                      </li>
+                      <li>
+                        <hr class="dropdown-divider" />
+                      </li>
+                      <li>
+                        <a class="dropdown-item" href="#">
+                          Notifications
+                        </a>
+                      </li>
+                      <li>
+                        <hr class="dropdown-divider" />
+                      </li>
+                      <li>
+                        <a class="dropdown-item" href="#">
+                          Log out
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                ) : (
+                  <NavLink to="/signup">
+                    <a
+                      style={Styles.loginSignupText}
+                      class="nav-link active"
+                      aria-current="page"
+                    >
+                      Login/SignUp
+                    </a>
+                  </NavLink>
+                )}
               </div>
             </div>
           </div>
@@ -153,10 +189,11 @@ export default class Navbar extends Component {
   }
 }
 
+export default Navbar
 const Styles = {
   navItemText: {
     fontSize: "13px",
-    cursor:"pointer"
+    cursor: "pointer",
   },
   loginSignupText: {
     textDecoration: "none",
@@ -164,7 +201,7 @@ const Styles = {
     color: "white",
     marginBottom: "0",
     marginLeft: "20px",
-    cursor:"pointer"
+    cursor: "pointer",
   },
   btnLanguage: {
     fontSize: "13px",

@@ -8,7 +8,7 @@ export default class MyCampaignCard extends Component {
       <div style={Styles.myCampaignCard}>
         <div style={Styles.myCampaignCardImage}>
             <div style={Styles.overlay}></div>
-          <img src={myCampaignCardImage} alt="my campaign card image" style={{width:"100%"}}></img>
+          <img src={myCampaignCardImage} alt="my campaign card image" style={{height:"100%"}}></img>
           <p style={Styles.myCampaignName}>{campaignName}</p>
         </div>
         

@@ -84,8 +84,7 @@ const Styles = {
     marginTop: "7%",
     marginLeft: "9%",
     marginRight: "9%",
-    height:"100%",
-    marginBottom:"30%"
+    height:"1000px",
   },
   introductionTitle: {
     color: "#707070",

@@ -3,6 +3,21 @@ import avatarMenu from "../assets/avatarMenu.png";
 import profileImage from "../assets/profileImage.png";
 
 export default class ProfileComponent extends Component {
+  state={
+    firstNameInput:"",
+    lastNameInput:"",
+    emailInput:"",
+    phoneInput:"",
+    facebookInput:"",
+    twitterInput:"",
+    currentPassword:"",
+    newPassword:""
+  }
+  handleForm=(evt)=>{
+    this.setState({
+      [evt.target.name]:evt.target.value
+    })
+  }
   render() {
     return (
       <div style={Styles.profileComponentContainer}>
@@ -90,7 +105,8 @@ export default class ProfileComponent extends Component {
                     id="inputFirstName"
                     aria-describedby="firstNameInput"
                     placeholder="Enter first name"
-                    value="Phillip"
+                    name="firstNameInput"
+                    value={this.state.firstNameInput}
                   />
                 </div>
                 <div style={Styles.inputName} class="mb-3">
@@ -105,9 +121,10 @@ export default class ProfileComponent extends Component {
                     type="text"
                     class="form-control"
                     id="inputLastName"
-                    aria-describedby="LastNameInput"
+                    aria-describedby="lastNameInput"
+                    name="lastNameInput"
                     placeholder="Enter last name"
-                    value="Coleman"
+                    value={this.state.lastNameInput}
                   />
                 </div>
               </div>
@@ -124,9 +141,10 @@ export default class ProfileComponent extends Component {
                     type="text"
                     class="form-control"
                     id="inputEmail"
-                    aria-describedby="EmailInput"
+                    aria-describedby="emailInput"
                     placeholder="Enter email"
-                    value="rippin_laurel@reinger.com"
+                    name="emailInput"
+                    value={this.state.emailInput}
                   />
                 </div>
                 <div style={Styles.inputName} class="mb-3">
@@ -142,8 +160,9 @@ export default class ProfileComponent extends Component {
                     class="form-control"
                     id="inputPhone"
                     aria-describedby="phoneInput"
+                    name="phoneInput"
                     placeholder="Enter phone number"
-                    value="642-674-9729"
+                    value={this.state.phoneInput}
                   />
                 </div>
               </div>
@@ -171,7 +190,9 @@ export default class ProfileComponent extends Component {
                     class="form-control"
                     id="facebookURL"
                     aria-describedby="facebook URL"
+                    name="facebookInput"
                     placeholder="Enter facebook URL"
+                    value={this.state.facebookInput}
                   />
                 </div>
                 <div style={Styles.inputName} class="mb-3">
@@ -187,7 +208,9 @@ export default class ProfileComponent extends Component {
                     class="form-control"
                     id="twitterURL"
                     aria-describedby="twitter URL"
+                    name="twitterInput"
                     placeholder="Enter twitter URL"
+                    value={this.state.twitterInput}
                   />
                 </div>
               </div>
@@ -219,6 +242,8 @@ export default class ProfileComponent extends Component {
                     id="currentPassword"
                     aria-describedby="current password"
                     placeholder="Enter current password"
+                    name="currentPassword"
+                    value={this.state.currentPassword}
                   />
                 </div>
                 <div style={Styles.inputName} class="mb-3">
@@ -235,6 +260,8 @@ export default class ProfileComponent extends Component {
                     id="newPassword"
                     aria-describedby="new password"
                     placeholder="Enter new password"
+                    name="newPassword"
+                    value={this.state.newPassword}
                   />
                 </div>
               </div>

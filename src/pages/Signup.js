@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Navbar from "../Components/Navbar";
+import {NavLink} from "react-router-dom"
 export default class Signup extends Component {
   days = [];
   months = [];
@@ -181,9 +181,9 @@ export default class Signup extends Component {
           </div>
           <p style={Styles.signUpText}>
             Already have an Account?{" "}
-            <a style={Styles.signUpLink} href="#">
+            <NavLink to="/login"><a style={Styles.signUpLink}>
               Log in
-            </a>
+            </a></NavLink>
           </p>
         </div>
       </div>

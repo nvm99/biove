@@ -11,7 +11,7 @@ export default class MyTrackListCard extends Component {
           <img
             src={myCampaignCardImage}
             alt="my campaign card image"
-            style={{ width: "100%" }}
+            style={{ height: "100%" }}
           ></img>
           <p style={Styles.treeName}>{treeName}</p>
         </div>

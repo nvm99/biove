@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Navbar from "../Components/Navbar";
 import firebase from "firebase/app";
 import * as signin_api from "../apis/signin.api";
+import {NavLink} from "react-router-dom"
 require('firebase/auth');
 var firebaseConfig = {
   apiKey: "AIzaSyCsuyVBFxBacPt-kgGtnU7lzVcanEpMYfY",
@@ -175,11 +176,9 @@ export default class Login extends Component {
             </form>
           </div>
           <p style={Styles.signUpText}>
-            Don’t have an Account? <a style={Styles.signUpLink}
-              onClick={() => {
-                this.props.setPage('signup')
-              }}
-            >Sign Up</a>
+            Don’t have an Account? <NavLink to="/signup"><a style={Styles.signUpLink}
+              
+            >Sign Up</a></NavLink>
           </p>
         </div>
       </div>

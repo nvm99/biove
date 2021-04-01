@@ -14,7 +14,9 @@ body {
 ::-webkit-scrollbar {
   width: 1px;
 }
-
+a {
+  text-decoration: none;
+}
 input::placeholder {
   padding-left: 10px;
   font-size: 13px;

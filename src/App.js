@@ -1,71 +1,113 @@
 import React, { Component } from "react";
 import "./App.css";
-import Header from "./Components/Header";
-import Slider from "./Components/Slider";
-import Introduction from "./Components/Introduction";
-import Heatmap from "./Components/Heatmap";
-import Testimonial from "./Components/Testimonial";
+import Home from "./pages/Home";
 import Footer from "./Components/Footer";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Navbar from "./Components/Navbar";
 import Profile from "./pages/Profile";
-export default class componentName extends Component {
+import { withRouter, Route, Switch } from "react-router-dom";
+import Planting from "./pages/Planting"
+import PlantingCard from "./Components/PlantingCard"
+class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { page: "home" };
+    this.state = { pathname: "/" };
   }
-  setPage = (page) => {
-    this.setState({ page: page });
-  };
-  renderPage() {
-    switch (this.state.page) {
+  renderNavbar=()=>{
+    if(this.state.pathname!==this.props.location.pathname){
+      this.setState({
+        pathname:this.props.location.pathname
+      })
+    }
+  }
+  componentDidMount=()=>{
+    this.renderNavbar()
+  }
+  componentDidUpdate=()=>{
+    this.renderNavbar()
+  }
+  renderPage = (page) => {
+    switch (page) {
       case "home":
         return (
           <>
-            {/* <Slider></Slider> */}
-            <Header></Header>
-            <Slider></Slider>
-            <Introduction></Introduction>
-            <Heatmap></Heatmap>
-            <Testimonial></Testimonial>
-
+            <Home/>
           </>
         );
       case "login":
         return (
           <>
-            <Login setPage={this.setPage} />
+            <Login/>
           </>
         );
       case "signup":
         return (
           <>
-            <Signup setPage={this.setPage} />
+            <Signup/>
+          </>
+        );
+        case "profile":
+        return (
+          <>
+            <Profile/>
+          </>
+        );
+        case "planting":
+        return (
+          <>
+            <PlantingCard campaignName="Chiến dịch A , kỉ niệm 50 năm huyện Trảng Bom"/>
           </>
         );
       default:
         <>
-          <Header></Header>
-          <Slider></Slider>
-          <Introduction></Introduction>
-          <Heatmap></Heatmap>
-          <Testimonial></Testimonial>
+          <Home/>
         </>;
     }
-  }
+  };
+
   render() {
     return (
       <div className="App">
-        <div style={this.state.page == 'home' ? { width: "100%", position: "absolute", zIndex: "10" } : Styles.navbarContainer}>
-          <Navbar setPage={this.setPage} />
+        <div
+          style={
+            // neu path la home thi su dung navbar home
+            this.state.pathname == "/"
+              ? { width: "100%", position: "absolute", zIndex: "10" }
+              : Styles.navbarContainer
+          }
+        >
+          <Navbar/>
         </div>
-        {this.renderPage()}
+        <Switch>
+          <Route exact path="/" render={() => this.renderPage("home")}></Route>
+          <Route
+            exact
+            path="/login"
+            render={() => this.renderPage("login")}
+          ></Route>
+          <Route
+            exact
+            path="/profile"
+            render={() => this.renderPage("profile")}
+          ></Route>
+          <Route
+            exact
+            path="/signup"
+            render={() => this.renderPage("signup")}
+          ></Route>
+          <Route
+            exact
+            path="/planting"
+            render={() => this.renderPage("planting")}
+          ></Route>
+        </Switch>
         <Footer />
       </div>
     );
   }
 }
+export default withRouter(App)
 const Styles = {
   navbarContainer: {
     width: "100%",

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import landing from "../../src/assets/landing.png";
-import Navbar from "../Components/Navbar";
+
 
 export default class Header extends Component {
   render() {
