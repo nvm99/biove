@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import avatarMenu from "../assets/avatarMenu.png";
 import profileImage from "../assets/profileImage.png";
-
+import * as user_api from "../apis/user.api"
 export default class ProfileComponent extends Component {
   state={
     firstNameInput:"",
@@ -57,11 +57,11 @@ export default class ProfileComponent extends Component {
               <div style={Styles.profileAvatar}>
                 <img
                   style={Styles.avatarStyle}
-                  src={avatarMenu}
+                  src={this.state.avatar}
                   alt="avatar Menu"
                 ></img>
               </div>
-              <p style={Styles.profileName}>Cory Carlson</p>
+              <p style={Styles.profileName}>{this.state.name}</p>
               <button style={Styles.profileEditBtn}>
                 <svg
                   width="16"
@@ -361,7 +361,7 @@ const Styles = {
   },
   profileEditBtn: {
     border: "none",
-    borderRadius:"3px",
+    borderRadius: "3px",
     textDecoration: "none",
     display: "flex",
     alignItems: "center",

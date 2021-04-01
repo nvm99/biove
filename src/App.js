@@ -59,6 +59,12 @@ class App extends Component {
             <PlantingCard campaignName="Chiến dịch A , kỉ niệm 50 năm huyện Trảng Bom"/>
           </>
         );
+      case "profile":
+        return (
+          <>
+            <Profile setPage={this.setPage} />
+          </>
+        );
       default:
         <>
           <Home/>
