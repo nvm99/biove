@@ -44,6 +44,12 @@ export default class componentName extends Component {
             <Signup setPage={this.setPage} />
           </>
         );
+      case "profile":
+        return (
+          <>
+            <Profile setPage={this.setPage} />
+          </>
+        );
       default:
         <>
           <Header></Header>

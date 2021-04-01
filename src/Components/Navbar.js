@@ -34,10 +34,10 @@ export default class Navbar extends Component {
                 class="ms-auto align-items-center navbar-nav"
                 style={Styles.marginRightULg}
               >
-                 <a style={{ ...Styles.marginLeftSm, ...Styles.navItemText }} class="nav-link active" aria-current="page" 
-                 onClick={()=>{
-                   this.props.setPage('home')
-                 }}>
+                <a style={{ ...Styles.marginLeftSm, ...Styles.navItemText }} class="nav-link active" aria-current="page"
+                  onClick={() => {
+                    this.props.setPage('home')
+                  }}>
                   Home
                 </a>
                 <a style={{ ...Styles.marginLeftSm, ...Styles.navItemText }} class="nav-link active" aria-current="page" href="#">
@@ -109,7 +109,10 @@ export default class Navbar extends Component {
                   </a>
                   <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                     <li>
-                      <a class="dropdown-item" href="#">
+                      <a class="dropdown-item"
+                        onClick={() => {
+                          this.props.setPage("profile")
+                        }}>
                         Profile
                       </a>
                     </li>
@@ -156,7 +159,7 @@ export default class Navbar extends Component {
 const Styles = {
   navItemText: {
     fontSize: "13px",
-    cursor:"pointer"
+    cursor: "pointer"
   },
   loginSignupText: {
     textDecoration: "none",
@@ -164,7 +167,7 @@ const Styles = {
     color: "white",
     marginBottom: "0",
     marginLeft: "20px",
-    cursor:"pointer"
+    cursor: "pointer"
   },
   btnLanguage: {
     fontSize: "13px",
