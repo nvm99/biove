@@ -87,6 +87,7 @@ const Styles = {
     alignItems: "center",
     justifyContent: "center",
     zIndex: "0",
+    cursor:"pointer"
   },
   carouselNavigationSeparator: {
     width: "40px",

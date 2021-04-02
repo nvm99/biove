@@ -11,8 +11,11 @@ export default class ProfileComponent extends Component {
     facebookInput:"",
     twitterInput:"",
     currentPassword:"",
-    newPassword:""
+    newPassword:"",
+    avatar:avatarMenu,
+    name:"NVM"
   }
+  
   handleForm=(evt)=>{
     this.setState({
       [evt.target.name]:evt.target.value
@@ -106,6 +109,7 @@ export default class ProfileComponent extends Component {
                     aria-describedby="firstNameInput"
                     placeholder="Enter first name"
                     name="firstNameInput"
+                    onChange={this.handleForm}
                     value={this.state.firstNameInput}
                   />
                 </div>
@@ -124,6 +128,7 @@ export default class ProfileComponent extends Component {
                     aria-describedby="lastNameInput"
                     name="lastNameInput"
                     placeholder="Enter last name"
+                    onChange={this.handleForm}
                     value={this.state.lastNameInput}
                   />
                 </div>
@@ -144,6 +149,7 @@ export default class ProfileComponent extends Component {
                     aria-describedby="emailInput"
                     placeholder="Enter email"
                     name="emailInput"
+                    onChange={this.handleForm}
                     value={this.state.emailInput}
                   />
                 </div>
@@ -162,6 +168,7 @@ export default class ProfileComponent extends Component {
                     aria-describedby="phoneInput"
                     name="phoneInput"
                     placeholder="Enter phone number"
+                    onChange={this.handleForm}
                     value={this.state.phoneInput}
                   />
                 </div>
@@ -192,6 +199,7 @@ export default class ProfileComponent extends Component {
                     aria-describedby="facebook URL"
                     name="facebookInput"
                     placeholder="Enter facebook URL"
+                    onChange={this.handleForm}
                     value={this.state.facebookInput}
                   />
                 </div>
@@ -210,6 +218,7 @@ export default class ProfileComponent extends Component {
                     aria-describedby="twitter URL"
                     name="twitterInput"
                     placeholder="Enter twitter URL"
+                    onChange={this.handleForm}
                     value={this.state.twitterInput}
                   />
                 </div>
@@ -243,6 +252,7 @@ export default class ProfileComponent extends Component {
                     aria-describedby="current password"
                     placeholder="Enter current password"
                     name="currentPassword"
+                    onChange={this.handleForm}
                     value={this.state.currentPassword}
                   />
                 </div>
@@ -261,6 +271,7 @@ export default class ProfileComponent extends Component {
                     aria-describedby="new password"
                     placeholder="Enter new password"
                     name="newPassword"
+                    onChange={this.handleForm}
                     value={this.state.newPassword}
                   />
                 </div>

@@ -10,7 +10,7 @@ class Navbar extends Component {
       this.state = { isLogin: false };
     }
   }
-  
+
   render() {
     return (
       <div style={Styles.paddingVertical}>
@@ -46,14 +46,15 @@ class Navbar extends Component {
                     Home
                   </a>
                 </NavLink>
-                <a
-                  style={{ ...Styles.marginLeftSm, ...Styles.navItemText }}
-                  class="nav-link active"
-                  aria-current="page"
-                  href="#"
-                >
-                  Planting
-                </a>
+                <NavLink to="/planting">
+                  <a
+                    style={{ ...Styles.marginLeftSm, ...Styles.navItemText }}
+                    class="nav-link active"
+                    aria-current="page"
+                  >
+                    Planting
+                  </a>
+                </NavLink>
                 <a
                   style={{ ...Styles.marginLeftSm, ...Styles.navItemText }}
                   class="nav-link active"
@@ -139,9 +140,9 @@ class Navbar extends Component {
                       aria-labelledby="dropdownMenuLink"
                     >
                       <li>
-                        <a class="dropdown-item" href="#">
-                          Profile
-                        </a>
+                        <NavLink to="/profile">
+                          <a class="dropdown-item">Profile</a>
+                        </NavLink>
                       </li>
                       <li>
                         <hr class="dropdown-divider" />
@@ -189,7 +190,7 @@ class Navbar extends Component {
   }
 }
 
-export default Navbar
+export default Navbar;
 const Styles = {
   navItemText: {
     fontSize: "13px",
