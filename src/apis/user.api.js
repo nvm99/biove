@@ -1,4 +1,4 @@
-const url = "http://biove.life/";
+const url = "https://api.biove.life/";
 export async function profile() {
     const response = await fetch(url+"user/profile", {
         method: 'GET',

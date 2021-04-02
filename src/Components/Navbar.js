@@ -171,7 +171,7 @@ class Navbar extends Component {
                     </ul>
                   </div>
                 ) : (
-                  <NavLink to="/signup">
+                  <NavLink to="/login">
                     <a
                       style={Styles.loginSignupText}
                       class="nav-link active"
