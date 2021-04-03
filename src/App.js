@@ -11,12 +11,10 @@ import { withRouter, Route, Switch } from "react-router-dom";
 import Planting from "./pages/Planting";
 import BioveAngel from "./pages/BioveAngel";
 import Payment from "./pages/Payment";
-import HeatmapPage from "./pages/HeatmapPage"
-import About from "./pages/About"
-
+import HeatmapPage from "./pages/HeatmapPage";
+import About from "./pages/About";
 
 class App extends Component {
-  
   renderPage = (page) => {
     switch (page) {
       case "home":
@@ -46,37 +44,37 @@ class App extends Component {
       case "planting":
         return (
           <>
-            <Planting/>
+            <Planting />
           </>
         );
       case "profile":
         return (
           <>
-            <Profile/>
+            <Profile />
           </>
         );
-        case "angel":
+      case "angel":
         return (
           <>
-            <BioveAngel/>
+            <BioveAngel />
           </>
         );
-        case "payment":
+      case "payment":
         return (
           <>
-            <Payment/>
+            <Payment />
           </>
         );
-        case "heatmap":
+      case "heatmap":
         return (
           <>
-            <HeatmapPage/>
+            <HeatmapPage />
           </>
         );
-        case "about":
+      case "about":
         return (
           <>
-            <About/>
+            <About />
           </>
         );
       default:
@@ -87,62 +85,73 @@ class App extends Component {
   };
 
   render() {
-    const {pathname}=this.props.location
+    const { pathname } = this.props.location;
     return (
       <div className="App">
         <div
           style={
             // neu path la home thi su dung navbar home
-            pathname == "/" || pathname == "/planting" || pathname == "/angel" || pathname =="/payment" || pathname =="/heatmap" || pathname=="/about"
+            pathname == "/" ||
+            pathname == "/planting" ||
+            pathname == "/angel" ||
+            pathname == "/payment" ||
+            pathname == "/heatmap" ||
+            pathname == "/about"
               ? { width: "100%", position: "absolute", zIndex: "10" }
               : Styles.navbarContainer
           }
         >
-          <Navbar pathName={pathname}/>
+          <Navbar pathName={pathname} />
         </div>
-        <Switch>
-          <Route exact path="/" render={() => this.renderPage("home")}></Route>
-          <Route
-            exact
-            path="/login"
-            render={() => this.renderPage("login")}
-          ></Route>
-          <Route
-            exact
-            path="/profile"
-            render={() => this.renderPage("profile")}
-          ></Route>
-          <Route
-            exact
-            path="/signup"
-            render={() => this.renderPage("signup")}
-          ></Route>
-          <Route
-            exact
-            path="/planting"
-            render={() => this.renderPage("planting")}
-          ></Route>
-          <Route
-            exact
-            path="/angel"
-            render={() => this.renderPage("angel")}
-          ></Route>
-          <Route
-            exact
-            path="/payment"
-            render={() => this.renderPage("payment")}
-          ></Route>
-          <Route
-            exact
-            path="/heatmap"
-            render={() => this.renderPage("heatmap")}
-          ></Route>
-          <Route
-            exact
-            path="/about"
-            render={() => this.renderPage("about")}
-          ></Route>
-        </Switch>
+        <div style={{ overflowX: "hidden" }}>
+          <Switch>
+            <Route
+              exact
+              path="/"
+              render={() => this.renderPage("home")}
+            ></Route>
+            <Route
+              exact
+              path="/login"
+              render={() => this.renderPage("login")}
+            ></Route>
+            <Route
+              exact
+              path="/profile"
+              render={() => this.renderPage("profile")}
+            ></Route>
+            <Route
+              exact
+              path="/signup"
+              render={() => this.renderPage("signup")}
+            ></Route>
+            <Route
+              exact
+              path="/planting"
+              render={() => this.renderPage("planting")}
+            ></Route>
+            <Route
+              exact
+              path="/angel"
+              render={() => this.renderPage("angel")}
+            ></Route>
+            <Route
+              exact
+              path="/payment"
+              render={() => this.renderPage("payment")}
+            ></Route>
+            <Route
+              exact
+              path="/heatmap"
+              render={() => this.renderPage("heatmap")}
+            ></Route>
+            <Route
+              exact
+              path="/about"
+              render={() => this.renderPage("about")}
+            ></Route>
+          </Switch>
+        </div>
         <Footer />
       </div>
     );
