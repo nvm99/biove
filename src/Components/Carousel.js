@@ -38,7 +38,7 @@ export default class Carousel extends Component {
             <img src={carouselImage} alt="carousel item 1" />
           </div>
         </Flickity>
-        <div style={Styles.carouselNavigation}>
+        <div style={this.props.page==="about"?Styles.carouselNavigationBlack:Styles.carouselNavigation}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="17"
@@ -53,7 +53,7 @@ export default class Carousel extends Component {
               d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"
             />
           </svg>
-          <div style={Styles.carouselNavigationSeparator}></div>
+          <div style={this.props.page==="about"?Styles.carouselNavigationSeparatorBlack:Styles.carouselNavigationSeparator}></div>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="17"
@@ -89,10 +89,32 @@ const Styles = {
     zIndex: "0",
     cursor:"pointer"
   },
+  carouselNavigationBlack:{
+    width: "7.2%",
+    height: "10%",
+    backgroundColor: "#E3DDDD",
+    position: "absolute",
+    top: "50%",
+    transform: "translate(0,-50%)",
+    marginLeft: ".9%",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    zIndex: "0",
+    cursor:"pointer"
+  },
   carouselNavigationSeparator: {
     width: "40px",
     height: "1px",
     backgroundColor: "#D8D8D8",
     transform: "rotate(-70deg)",
   },
+  carouselNavigationSeparatorBlack:{
+    width: "30px",
+    height: "1px",
+    backgroundColor: "#706E6E",
+    transform: "rotate(-70deg)",
+    marginLeft:"5px",
+    marginRight:"5px"
+  }
 };

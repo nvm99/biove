@@ -64,18 +64,18 @@ class Navbar extends Component {
                   </a>
                 </NavLink>
                 <NavLink to="/heatmap">
-                <a
-                  style={{ ...Styles.marginLeftSm, ...Styles.navItemText }}
-                  className={
-                    this.props.pathName === "/heatmap"
-                      ? "nav-link active page-selected"
-                      : "nav-link active"
-                  }
-                  aria-current="page"
-                  href="#"
-                >
-                  Biomap
-                </a>
+                  <a
+                    style={{ ...Styles.marginLeftSm, ...Styles.navItemText }}
+                    className={
+                      this.props.pathName === "/heatmap"
+                        ? "nav-link active page-selected"
+                        : "nav-link active"
+                    }
+                    aria-current="page"
+                    href="#"
+                  >
+                    Biomap
+                  </a>
                 </NavLink>
                 <NavLink to="/angel">
                   <a
@@ -90,19 +90,25 @@ class Navbar extends Component {
                     Biove Angel
                   </a>
                 </NavLink>
-                <a
-                  style={{ ...Styles.marginLeftSm, ...Styles.navItemText }}
-                  class="nav-link active"
-                  aria-current="page"
-                  href="#"
-                >
-                  About Us
-                </a>
+                <NavLink to="/about">
+                  <a
+                    style={{ ...Styles.marginLeftSm, ...Styles.navItemText }}
+                    className={
+                      this.props.pathName === "/about"
+                        ? "nav-link active page-selected"
+                        : "nav-link active"
+                    }
+                    aria-current="page"
+                    href="#"
+                  >
+                    About Us
+                  </a>
+                </NavLink>
                 <a
                   style={{ ...Styles.btnLanguage, ...Styles.marginRightMed }}
                   class="nav-link active"
                   aria-current="page"
-                  href="#"
+                  
                 >
                   Language: Vietnam
                 </a>

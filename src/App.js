@@ -12,6 +12,7 @@ import Planting from "./pages/Planting";
 import BioveAngel from "./pages/BioveAngel";
 import Payment from "./pages/Payment";
 import HeatmapPage from "./pages/HeatmapPage"
+import About from "./pages/About"
 
 
 class App extends Component {
@@ -72,6 +73,12 @@ class App extends Component {
             <HeatmapPage/>
           </>
         );
+        case "about":
+        return (
+          <>
+            <About/>
+          </>
+        );
       default:
         <>
           <Home />
@@ -86,7 +93,7 @@ class App extends Component {
         <div
           style={
             // neu path la home thi su dung navbar home
-            pathname == "/" || pathname == "/planting" || pathname == "/angel" || pathname =="/payment" || pathname =="/heatmap"
+            pathname == "/" || pathname == "/planting" || pathname == "/angel" || pathname =="/payment" || pathname =="/heatmap" || pathname=="/about"
               ? { width: "100%", position: "absolute", zIndex: "10" }
               : Styles.navbarContainer
           }
@@ -129,6 +136,11 @@ class App extends Component {
             exact
             path="/heatmap"
             render={() => this.renderPage("heatmap")}
+          ></Route>
+          <Route
+            exact
+            path="/about"
+            render={() => this.renderPage("about")}
           ></Route>
         </Switch>
         <Footer />

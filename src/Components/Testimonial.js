@@ -85,19 +85,20 @@ const Styles = {
   testimonialContainer: {
     backgroundColor: "#F8F8F8",
     width: "100%",
-    height: "90vh",
-    padding: "9%",
+    height: "518px",
+    paddingTop: "100px",
+    paddingBottom: "100px",
+    paddingLeft:"9%",
     display: "flex",
-    justifyContent: "space-between",
+    
   },
   testimonialContainerLeft: {
     display: "flex",
     flexDirection: "column",
-    height: "100%",
   },
   testimonialContainerRight: {
     display: "flex",
-    marginLeft:"20%"
+    marginLeft:"100px"
   },
   testimonialTitle: {
     fontSize: "14px",
@@ -107,7 +108,7 @@ const Styles = {
   testimonialHead: {
     fontSize: "50px",
     fontWeight: "500",
-    width: "20%",
+    width:"280px"
   },
   testimonialNavigation: {
     width: "120px",
@@ -126,7 +127,7 @@ const Styles = {
   },
   testimonialItem: {
     backgroundColor: "white",
-    width: "50%",
+    width: "357px",
     height: "100%",
     boxShadow: "0 1px 2px 0 rgba(0, 0, 0, 0.2)",
     padding: "5%",
