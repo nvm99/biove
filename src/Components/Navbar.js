@@ -63,14 +63,20 @@ class Navbar extends Component {
                     Planting
                   </a>
                 </NavLink>
+                <NavLink to="/heatmap">
                 <a
                   style={{ ...Styles.marginLeftSm, ...Styles.navItemText }}
-                  class="nav-link active"
+                  className={
+                    this.props.pathName === "/heatmap"
+                      ? "nav-link active page-selected"
+                      : "nav-link active"
+                  }
                   aria-current="page"
                   href="#"
                 >
                   Biomap
                 </a>
+                </NavLink>
                 <NavLink to="/angel">
                   <a
                     style={{ ...Styles.marginLeftSm, ...Styles.navItemText }}
