@@ -5,10 +5,13 @@ import Footer from "./Components/Footer";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Navbar from "./Components/Navbar";
+
 import Profile from "./pages/Profile";
 import { withRouter, Route, Switch } from "react-router-dom";
 import Planting from "./pages/Planting";
 import BioveAngel from "./pages/BioveAngel";
+import Payment from "./pages/Payment";
+import HeatmapPage from "./pages/HeatmapPage"
 
 
 class App extends Component {
@@ -57,6 +60,18 @@ class App extends Component {
             <BioveAngel/>
           </>
         );
+        case "payment":
+        return (
+          <>
+            <Payment/>
+          </>
+        );
+        case "heatmap":
+        return (
+          <>
+            <HeatmapPage/>
+          </>
+        );
       default:
         <>
           <Home />
@@ -65,17 +80,18 @@ class App extends Component {
   };
 
   render() {
+    const {pathname}=this.props.location
     return (
       <div className="App">
         <div
           style={
             // neu path la home thi su dung navbar home
-            this.props.location.pathname == "/" || this.props.location.pathname == "/planting" || this.props.location.pathname == "/angel"
+            pathname == "/" || pathname == "/planting" || pathname == "/angel" || pathname =="/payment" || pathname =="/heatmap"
               ? { width: "100%", position: "absolute", zIndex: "10" }
               : Styles.navbarContainer
           }
         >
-          <Navbar pathName={this.props.location.pathname}/>
+          <Navbar pathName={pathname}/>
         </div>
         <Switch>
           <Route exact path="/" render={() => this.renderPage("home")}></Route>
@@ -103,6 +119,16 @@ class App extends Component {
             exact
             path="/angel"
             render={() => this.renderPage("angel")}
+          ></Route>
+          <Route
+            exact
+            path="/payment"
+            render={() => this.renderPage("payment")}
+          ></Route>
+          <Route
+            exact
+            path="/heatmap"
+            render={() => this.renderPage("heatmap")}
           ></Route>
         </Switch>
         <Footer />
