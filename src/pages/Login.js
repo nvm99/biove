@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import Navbar from "../Components/Navbar";
 import firebase from "firebase/app";
 import * as signin_api from "../apis/signin.api";
-import {NavLink} from "react-router-dom"
+import {NavLink, withRouter} from "react-router-dom"
+
 require('firebase/auth');
 var firebaseConfig = {
   apiKey: "AIzaSyCsuyVBFxBacPt-kgGtnU7lzVcanEpMYfY",
@@ -16,8 +17,10 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
 const facebookAuthprovider = new firebase.auth.FacebookAuthProvider();
-export default class Login extends Component {
+ class Login extends Component {
+   
   render() {
+    const {history}=this.props
     return (
       <div>
         <div style={Styles.loginContainer}>
@@ -37,6 +40,7 @@ export default class Login extends Component {
                       signin_api.login_firebase(idToken).then((data) => {
                         if(data.token){
                           localStorage.setItem("token",data.token)
+                          history.push("/")
                         }else{
                           alert(data.message)
                         }
@@ -51,6 +55,7 @@ export default class Login extends Component {
                         signin_api.login_firebase(idToken).then((data) => {
                           if(data.token){
                             localStorage.setItem("token",data.token)
+                            history.push("/")
                           }else{
                             alert(data.message)
                           }
@@ -185,7 +190,7 @@ export default class Login extends Component {
     );
   }
 }
-
+export default withRouter(Login)
 const Styles = {
   navbarContainer: {
     width: "100%",
