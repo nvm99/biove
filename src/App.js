@@ -8,26 +8,11 @@ import Navbar from "./Components/Navbar";
 import Profile from "./pages/Profile";
 import { withRouter, Route, Switch } from "react-router-dom";
 import Planting from "./pages/Planting";
+import BioveAngel from "./pages/BioveAngel";
 
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { pathname: "/" };
-  }
-  renderNavbar = () => {
-    if (this.state.pathname !== this.props.location.pathname) {
-      this.setState({
-        pathname: this.props.location.pathname,
-      });
-    }
-  };
-  componentDidMount = () => {
-    this.renderNavbar();
-  };
-  componentDidUpdate = () => {
-    this.renderNavbar();
-  };
+  
   renderPage = (page) => {
     switch (page) {
       case "home":
@@ -66,6 +51,12 @@ class App extends Component {
             <Profile/>
           </>
         );
+        case "angel":
+        return (
+          <>
+            <BioveAngel/>
+          </>
+        );
       default:
         <>
           <Home />
@@ -79,12 +70,12 @@ class App extends Component {
         <div
           style={
             // neu path la home thi su dung navbar home
-            this.state.pathname == "/" || this.state.pathname == "/planting"
+            this.props.location.pathname == "/" || this.props.location.pathname == "/planting" || this.props.location.pathname == "/angel"
               ? { width: "100%", position: "absolute", zIndex: "10" }
               : Styles.navbarContainer
           }
         >
-          <Navbar />
+          <Navbar pathName={this.props.location.pathname}/>
         </div>
         <Switch>
           <Route exact path="/" render={() => this.renderPage("home")}></Route>
@@ -107,6 +98,11 @@ class App extends Component {
             exact
             path="/planting"
             render={() => this.renderPage("planting")}
+          ></Route>
+          <Route
+            exact
+            path="/angel"
+            render={() => this.renderPage("angel")}
           ></Route>
         </Switch>
         <Footer />

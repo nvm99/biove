@@ -40,7 +40,11 @@ class Navbar extends Component {
                 <NavLink to="/">
                   <a
                     style={{ ...Styles.marginLeftSm, ...Styles.navItemText }}
-                    class="nav-link active"
+                    className={
+                      this.props.pathName === "/"
+                        ? "nav-link active page-selected"
+                        : "nav-link active"
+                    }
                     aria-current="page"
                   >
                     Home
@@ -49,7 +53,11 @@ class Navbar extends Component {
                 <NavLink to="/planting">
                   <a
                     style={{ ...Styles.marginLeftSm, ...Styles.navItemText }}
-                    class="nav-link active"
+                    className={
+                      this.props.pathName === "/planting"
+                        ? "nav-link active page-selected"
+                        : "nav-link active"
+                    }
                     aria-current="page"
                   >
                     Planting
@@ -63,14 +71,19 @@ class Navbar extends Component {
                 >
                   Biomap
                 </a>
-                <a
-                  style={{ ...Styles.marginLeftSm, ...Styles.navItemText }}
-                  class="nav-link active"
-                  aria-current="page"
-                  href="#"
-                >
-                  Biove Angel
-                </a>
+                <NavLink to="/angel">
+                  <a
+                    style={{ ...Styles.marginLeftSm, ...Styles.navItemText }}
+                    className={
+                      this.props.pathName === "/angel"
+                        ? "nav-link active page-selected"
+                        : "nav-link active"
+                    }
+                    aria-current="page"
+                  >
+                    Biove Angel
+                  </a>
+                </NavLink>
                 <a
                   style={{ ...Styles.marginLeftSm, ...Styles.navItemText }}
                   class="nav-link active"
