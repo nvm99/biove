@@ -1,4 +1,4 @@
-const url = "http://biove.life/";
+const url = "https://api.biove.life/";
 export async function register(email, password, name, yearOfBirth) {
     const response = await fetch(url, {
         method: 'POST',
