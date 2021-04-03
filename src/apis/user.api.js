@@ -1,4 +1,5 @@
-const url = "https://api.biove.life/";
+// const url = "https://api.biove.life/";
+const url = "http://localhost:2000/";
 export async function profile() {
     const response = await fetch(url+"user/profile", {
         method: 'GET',

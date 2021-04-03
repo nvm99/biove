@@ -2,25 +2,26 @@ import React, { Component } from "react";
 import Navbar from "../Components/Navbar";
 import firebase from "firebase/app";
 import * as signin_api from "../apis/signin.api";
-import {NavLink, withRouter} from "react-router-dom"
+import { NavLink, withRouter } from "react-router-dom"
 
 require('firebase/auth');
-var firebaseConfig = {
-  apiKey: "AIzaSyCsuyVBFxBacPt-kgGtnU7lzVcanEpMYfY",
-  authDomain: "biove-fbee4.firebaseapp.com",
-  projectId: "biove-fbee4",
-  storageBucket: "biove-fbee4.appspot.com",
-  messagingSenderId: "152663085070",
-  appId: "1:152663085070:web:fd2f506c492ae0cbf96c5f",
-  measurementId: "G-SEFHV9KE98"
-};
-firebase.initializeApp(firebaseConfig);
+// var firebaseConfig = {
+//   apiKey: "AIzaSyCsuyVBFxBacPt-kgGtnU7lzVcanEpMYfY",
+//   authDomain: "biove-fbee4.firebaseapp.com",
+//   projectId: "biove-fbee4",
+//   storageBucket: "biove-fbee4.appspot.com",
+//   messagingSenderId: "152663085070",
+//   appId: "1:152663085070:web:fd2f506c492ae0cbf96c5f",
+//   measurementId: "G-SEFHV9KE98"
+// };
+// firebase.initializeApp(firebaseConfig);
+
 const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
 const facebookAuthprovider = new firebase.auth.FacebookAuthProvider();
- class Login extends Component {
-   
+class Login extends Component {
+
   render() {
-    const {history}=this.props
+    const { history } = this.props
     return (
       <div>
         <div style={Styles.loginContainer}>
@@ -38,10 +39,11 @@ const facebookAuthprovider = new firebase.auth.FacebookAuthProvider();
                   .then((result) => {
                     firebase.auth().currentUser.getIdToken(true).then((idToken) => {
                       signin_api.login_firebase(idToken).then((data) => {
-                        if(data.token){
-                          localStorage.setItem("token",data.token)
+                        if (data.token) {
+                          localStorage.setItem("token", data.token)
                           history.push("/")
-                        }else{
+                          history.go()
+                        } else {
                           alert(data.message)
                         }
                       })
@@ -50,18 +52,11 @@ const facebookAuthprovider = new firebase.auth.FacebookAuthProvider();
                     });
                   })
                   .catch((error) => {
-                    if (error.email) {
-                      firebase.auth().currentUser.getIdToken(true).then((idToken) => {
-                        signin_api.login_firebase(idToken).then((data) => {
-                          if(data.token){
-                            localStorage.setItem("token",data.token)
-                            history.push("/")
-                          }else{
-                            alert(data.message)
-                          }
-                        })  
-                      }).catch((error) => {
-                        // Handle error
+                    console.log(error)
+                    if (error.code === 'auth/account-exists-with-different-credential') {
+                      var pendingCred = error.credential;
+                      var email = error.email;
+                      firebase.auth().fetchSignInMethodsForEmail(email).then(function (methods) {
                       });
                     }
                   });
@@ -95,9 +90,11 @@ const facebookAuthprovider = new firebase.auth.FacebookAuthProvider();
                   .then((result) => {
                     firebase.auth().currentUser.getIdToken(true).then((idToken) => {
                       signin_api.login_firebase(idToken).then((data) => {
-                        if(data.token){
-                          localStorage.setItem("token",data.token)
-                        }else{
+                        if (data.token) {
+                          localStorage.setItem("token", data.token)
+                          history.push("/")
+                          history.go()
+                        } else {
                           alert(data.message)
                         }
                       })
@@ -106,7 +103,6 @@ const facebookAuthprovider = new firebase.auth.FacebookAuthProvider();
                     });
 
                   })
-
               }}
             >
               <svg
@@ -182,7 +178,7 @@ const facebookAuthprovider = new firebase.auth.FacebookAuthProvider();
           </div>
           <p style={Styles.signUpText}>
             Don’t have an Account? <NavLink to="/signup"><a style={Styles.signUpLink}
-              
+
             >Sign Up</a></NavLink>
           </p>
         </div>

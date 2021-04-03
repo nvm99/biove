@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import avatarMenu from "../assets/avatarMenu.png";
-import { NavLink } from "react-router-dom";
+import { NavLink, withRouter } from "react-router-dom";
+import firebase from "firebase/app"
+require('firebase/auth');
 class Navbar extends Component {
   constructor(props) {
     super(props);
@@ -9,9 +11,11 @@ class Navbar extends Component {
     } else {
       this.state = { isLogin: false };
     }
+
   }
 
   render() {
+    const { history } = this.props
     return (
       <div style={Styles.paddingVertical}>
         <nav class="navbar navbar-expand-lg navbar-dark">
@@ -177,7 +181,15 @@ class Navbar extends Component {
                         <hr class="dropdown-divider" />
                       </li>
                       <li>
-                        <a class="dropdown-item" href="#">
+                        <a class="dropdown-item" onClick={() => {
+                          firebase.auth().signOut().then(() => {
+                            localStorage.clear();
+                            history.push('/')
+                            history.go()
+                          }).catch((error) => {
+                            alert(error)
+                          });
+                        }}>
                           Log out
                         </a>
                       </li>
@@ -203,7 +215,7 @@ class Navbar extends Component {
   }
 }
 
-export default Navbar;
+export default withRouter(Navbar);
 const Styles = {
   navItemText: {
     fontSize: "13px",
