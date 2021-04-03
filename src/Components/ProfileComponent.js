@@ -3,17 +3,30 @@ import avatarMenu from "../assets/avatarMenu.png";
 import profileImage from "../assets/profileImage.png";
 import * as user_api from "../apis/user.api"
 export default class ProfileComponent extends Component {
-  state={
-    firstNameInput:"",
-    lastNameInput:"",
-    emailInput:"",
-    phoneInput:"",
-    facebookInput:"",
-    twitterInput:"",
-    currentPassword:"",
-    newPassword:"",
-    avatar:avatarMenu,
-    name:"NVM"
+  constructor(props){
+    super(props);
+    this.state={
+      firstNameInput:"",
+      lastNameInput:"",
+      emailInput:"",
+      phoneInput:"",
+      facebookInput:"",
+      twitterInput:"",
+      currentPassword:"",
+      newPassword:"",
+      avatar:avatarMenu,
+      name:""
+    }
+    user_api.profile().then((data)=>{
+      let name = data.name.split(' ');
+      this.setState({
+        firstNameInput:name[name.length -1],
+        lastNameInput:name.slice(0,name.length-1).join(' '),
+        emailInput:data.email,
+        avatar:data.avatar,
+        name:data.name,
+      })
+    })
   }
   
   handleForm=(evt)=>{

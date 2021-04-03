@@ -2,12 +2,18 @@ import React, { Component } from "react";
 import avatarMenu from "../assets/avatarMenu.png";
 import { NavLink, withRouter } from "react-router-dom";
 import firebase from "firebase/app"
+import * as user_api from "../apis/user.api";
 require('firebase/auth');
 class Navbar extends Component {
   constructor(props) {
     super(props);
     if (localStorage.getItem("token")) {
       this.state = { isLogin: true };
+      user_api.profile().then(data => {
+        this.setState = {
+          avatar: data.avatar
+        };
+      })
     } else {
       this.state = { isLogin: false };
     }
@@ -112,7 +118,7 @@ class Navbar extends Component {
                   style={{ ...Styles.btnLanguage, ...Styles.marginRightMed }}
                   class="nav-link active"
                   aria-current="page"
-                  
+
                 >
                   Language: Vietnam
                 </a>
@@ -137,18 +143,22 @@ class Navbar extends Component {
                       data-bs-toggle="dropdown"
                       aria-expanded="false"
                     >
-                      <div
-                        style={{
-                          ...Styles.avatarContainer,
-                          ...Styles.marginLeftMed,
-                        }}
-                      >
-                        <img
-                          style={Styles.avatarStyle}
-                          src={avatarMenu}
-                          alt="avatar Menu"
-                        ></img>
-                      </div>
+                      {
+                        this.state.isLogin &&
+                        <div
+                          style={{
+                            ...Styles.avatarContainer,
+                            ...Styles.marginLeftMed,
+                          }}
+                        >
+                          <img
+                            style={Styles.avatarStyle}
+                            src={this.state.avatar}
+                            alt="avatar Menu"
+                          ></img>
+                        </div>
+                      }
+
                       <svg
                         style={Styles.marginLeftSm}
                         xmlns="http://www.w3.org/2000/svg"
