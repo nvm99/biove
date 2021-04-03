@@ -1,5 +1,5 @@
-// const url = "https://api.biove.life/";
-const url = "http://localhost:2000/";
+const url = "https://api.biove.life/";
+// const url = "http://localhost:2000/";
 let res_profile = undefined;
 export async function profile() {
     if (res_profile!=undefined)return res_profile;
