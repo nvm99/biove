@@ -7,8 +7,18 @@ import GalleryMore from "../Components/GalleryMore";
 import StoryCard from "../Components/StoryCard";
 import shortImage from "../assets/shortItem.png";
 import longImage from "../assets/longItem.png";
-
+import * as planting_api from "../apis/planting.api"
 export default class BioveAngel extends Component {
+  constructor(props){
+    super(props)
+    
+  }
+  componentDidMount(){
+    planting_api.getCommunities.then(data=>{
+      
+    })
+  }
+  
   state = {
     pages: ["COMMUNITY", "CAMPAIGN", "TREES"],
     pageSelected: 0,
