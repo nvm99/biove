@@ -55,6 +55,14 @@ input:focus {
   counter-increment: carousel-cell;
   transform: translateX(-40.5%);
 }
+.carousel-cell-tree {
+  width: 617px;
+  height: 400px;
+  margin-right: 18px;
+  counter-increment: carousel-cell;
+  transform: translateX(-43.5%);
+  overflow: hidden;
+}
 .flickity-prev-next-button{
   opacity: 0;
   display:none;
@@ -162,3 +170,7 @@ body .card #slider #max #max-drag:hover {
   box-shadow: 0 0 0 6px rgba(39, 70, 132, 0.2);
 }
 
+.carouselContainer{
+  overflow: hidden;
+
+}

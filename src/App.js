@@ -13,6 +13,9 @@ import BioveAngel from "./pages/BioveAngel";
 import Payment from "./pages/Payment";
 import HeatmapPage from "./pages/HeatmapPage";
 import About from "./pages/About";
+import Community from "./pages/Community";
+import TreeDonate from "./pages/TreeDonate"
+import Tree from "./pages/Tree"
 
 class App extends Component {
   renderPage = (page) => {
@@ -77,6 +80,24 @@ class App extends Component {
             <About />
           </>
         );
+        case "community":
+        return (
+          <>
+            <Community />
+          </>
+        );
+        case "donate":
+        return (
+          <>
+            <TreeDonate />
+          </>
+        );
+        case "tree":
+        return (
+          <>
+            <Tree />
+          </>
+        );
       default:
         <>
           <Home />
@@ -96,7 +117,10 @@ class App extends Component {
             pathname == "/angel" ||
             pathname == "/payment" ||
             pathname == "/heatmap" ||
-            pathname == "/about"
+            pathname == "/about" ||
+            pathname =="/angel/community" ||
+            pathname =="/donate" ||
+            pathname =="/angel/tree"
               ? { width: "100%", position: "absolute", zIndex: "10" }
               : Styles.navbarContainer
           }
@@ -149,6 +173,21 @@ class App extends Component {
               exact
               path="/about"
               render={() => this.renderPage("about")}
+            ></Route>
+            <Route
+              exact
+              path="/angel/community"
+              render={() => this.renderPage("community")}
+            ></Route>
+            <Route
+              
+              path="/donate"
+              render={() => this.renderPage("donate")}
+            ></Route>
+            <Route
+              exact
+              path="/angel/tree"
+              render={() => this.renderPage("tree")}
             ></Route>
           </Switch>
         </div>

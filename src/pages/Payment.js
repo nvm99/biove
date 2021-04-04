@@ -62,7 +62,7 @@ export default class Payment extends Component {
       );
     });
     return (
-      <div style={{paddingBottom:"100px"}}>
+      <div style={{ paddingBottom: "100px" }}>
         <div style={Styles.sideHeroImage}></div>
         <div style={{ marginLeft: "7%", marginTop: "66px" }}>
           <p style={Styles.paymentHeader}>1. Thông tin chung</p>
@@ -237,21 +237,30 @@ export default class Payment extends Component {
           </p>
           <div
             class="form-check"
-            style={{ marginTop: "35px", marginLeft: "13px", marginBottom:'30px' }}
+            style={{
+              marginTop: "35px",
+              marginLeft: "13px",
+              marginBottom: "30px",
+            }}
           >
             <input
               type="checkbox"
               class="form-check-input"
               id="exampleCheck1"
             />
-            <label class="form-check-label" for="exampleCheck1" style={{fontSize:"14px",fontWeight:"500"}}>
-              Tôi đồng ý với những quy định mà BIOVE đưa ra. <a href="#">Link to policies</a>
+            <label
+              class="form-check-label"
+              for="exampleCheck1"
+              style={{ fontSize: "14px", fontWeight: "500" }}
+            >
+              Tôi đồng ý với những quy định mà BIOVE đưa ra.{" "}
+              <a href="#">Link to policies</a>
             </label>
           </div>
-        <div style={Styles.btnContainer}>
+          <div style={Styles.btnContainer}>
             <button style={Styles.QRBtn}>Lấy mã QR</button>
             <button style={Styles.shareBtn}>Chia sẻ lên Facebook</button>
-        </div>
+          </div>
         </div>
       </div>
     );
@@ -357,29 +366,29 @@ const Styles = {
     alignItems: "center",
     justifyContent: "center",
   },
-  btnContainer:{
+  btnContainer: {
     marginLeft: "13px",
-    display:"flex",
-    gap:"20px"
+    display: "flex",
+    gap: "20px",
   },
-  QRBtn:{
-      width:"168px",
-      height:"50px",
-      borderRadius:"3px",
-      background:"#FF5200",
-      color:"white",
-      fontSize:"14px",
-      fontWeight:"500",
-      border:"none"
+  QRBtn: {
+    width: "168px",
+    height: "50px",
+    borderRadius: "3px",
+    background: "#FF5200",
+    color: "white",
+    fontSize: "14px",
+    fontWeight: "500",
+    border: "none",
   },
-  shareBtn:{
-    width:"202px",
-    height:"50px",
-    borderRadius:"3px",
-    background:"transparent",
-    color:"#FF5200",
-    fontSize:"14px",
-    fontWeight:"500",
-    border:"1px solid #FF5200"
-}
+  shareBtn: {
+    width: "202px",
+    height: "50px",
+    borderRadius: "3px",
+    background: "transparent",
+    color: "#FF5200",
+    fontSize: "14px",
+    fontWeight: "500",
+    border: "1px solid #FF5200",
+  },
 };
