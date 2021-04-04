@@ -35,17 +35,18 @@ import * as planting_api from "../apis/planting.api"
         return "Top Beloved Trees";
     }
   };
-  onCommunityClick=()=>{
+  onCommunityClick=(community_id)=>{
     this.setState({
       pageSelected:1
     })
+    
   }
-  onCampaignClick=()=>{
+  onCampaignClick=(campaign_id)=>{
     this.setState({
       pageSelected:2
     })
   }
-  onTreeClick=(id)=>{
+  onTreeClick=(tree_id)=>{
     this.props.history.push("/donate"+id)
   }
   renderGallery=()=>{
