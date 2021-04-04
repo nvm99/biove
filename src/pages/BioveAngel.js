@@ -14,8 +14,8 @@ export default class BioveAngel extends Component {
     
   }
   componentDidMount(){
-    planting_api.getCommunities.then(data=>{
-      
+    planting_api.getCommunities().then(data=>{
+
     })
   }
   
