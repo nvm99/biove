@@ -1,28 +1,28 @@
 import React, { Component } from "react";
 import sideHeroImage from "../../src/assets/sideHeroImage.png";
-import {withRouter} from "react-router-dom"
+import { withRouter } from "react-router-dom";
 import GalleryItemLong from "../Components/GalleryItemLong";
 import GalleryItemShort from "../Components/GalleryItemShort";
 import GalleryMore from "../Components/GalleryMore";
 import StoryCard from "../Components/StoryCard";
 import shortImage from "../assets/shortItem.png";
 import longImage from "../assets/longItem.png";
-import * as planting_api from "../apis/planting.api"
- class BioveAngel extends Component {
-  componentDidMount(){
-    planting_api.getCommunities().then(data=>{
+import * as planting_api from "../apis/planting.api";
+class BioveAngel extends Component {
+  componentDidMount() {
+    planting_api.getCommunities().then((data) => {
       this.setState({
-        communities:data
-      })
-    })
+        communities: data,
+      });
+    });
   }
-  
+
   state = {
     pages: ["COMMUNITY", "CAMPAIGN", "TREES"],
     pageSelected: 0,
-    communities:[],
-    campaigns:[],
-    trees:[]
+    communities: [],
+    campaigns: [],
+    trees: [],
     
   };
   renderTitle = () => {
@@ -35,32 +35,101 @@ import * as planting_api from "../apis/planting.api"
         return "Top Beloved Trees";
     }
   };
-  onCommunityClick=(community_id)=>{
+  onCommunityClick = (community_id) => {
     this.setState({
-      pageSelected:1
+      pageSelected: 1,
+    });
+    planting_api.getCampaigns(community_id).then((data) => {
+      this.setState({
+        campaigns: data,
+      });
+    });
+
+  };
+  onCampaignClick = (campaign_id) => {
+    this.setState({
+      pageSelected: 2,
+    });
+    planting_api.getTrees(campaign_id).then(data=>{
+      this.setState({
+        trees:data
+      })
     })
+  };
+  onTreeClick = (tree_id) => {
+    this.props.history.push("/donate/" + tree_id);
     
-  }
-  onCampaignClick=(campaign_id)=>{
-    this.setState({
-      pageSelected:2
-    })
-  }
-  onTreeClick=(tree_id)=>{
-    this.props.history.push("/donate"+id)
-  }
-  renderGallery=()=>{
-    switch(this.state.pageSelected){
+  };
+  renderGallery = () => {
+    switch (this.state.pageSelected) {
       case 0:
-        return this.state.communities.map((community,i)=>{
-          if(community.name==="BIOVE"){
-            return <GalleryItemLong page={0} title={community.name}  image={community.avatar} />
+        return this.state.communities.map((community, i) => {
+          if (community.name === "BIOVE") {
+            return (
+              <GalleryItemLong
+                handleClick={()=>this.onCommunityClick(community._id)}
+                page={0}
+                title={community.name}
+                image={community.avatar}
+              />
+            );
           }
-          return <GalleryItemShort page={0} title={community.name}  image={community.avatar} />
-        })
+          return (
+            <GalleryItemShort
+              handleClick={()=>this.onCommunityClick(community._id)}
+              page={0}
+              title={community.name}
+              image={community.avatar}
+            />
+          );
+        });
+        case 1:
+        return this.state.campaigns.map((campaign, i) => {
+          if (campaign.name === "BIOVE") {
+            return (
+              <GalleryItemLong
+                handleClick={()=>this.onCampaignClick(campaign._id)}
+                page={1}
+                title={campaign.name}
+                
+                image={longImage}
+              />
+            );
+          }
+          return (
+            <GalleryItemShort
+              handleClick={()=>this.onCampaignClick(campaign._id)}
+              page={1}
+              title={campaign.name}
+              image={shortImage}
+            />
+          );
+        });
+        case 2:
+        return this.state.trees.map((tree, i) => {
+          if (tree.name === "BIOVE") {
+            return (
+              <GalleryItemLong
+                handleClick={()=>this.onTreeClick(tree._id)}
+                page={1}
+                title={tree.name}
+                
+                image={tree.thumbnail}
+              />
+            );
+          }
+          return (
+            <GalleryItemShort
+              handleClick={()=>this.onTreeClick(tree._id)}
+              page={1}
+              title={tree.name}
+              image={tree.thumbnail}
+            />
+          );
+        });
     }
-  }
-  renderStoryTitle=()=>{
+  };
+  renderStoryTitle = () => {
     switch (this.state.pageSelected) {
       case 0:
         return "Most like communities' stories";
@@ -69,17 +138,19 @@ import * as planting_api from "../apis/planting.api"
       case 2:
         return "Our stories";
     }
-  }
+  };
   render() {
     const { pages, pageSelected } = this.state;
-    const galleryRender=this.renderGallery()
+    const galleryRender = this.renderGallery();
     const title = this.renderTitle();
     const storyTitle = this.renderStoryTitle();
     return (
       <div>
         <div style={{ marginBottom: "143px" }}>
           <div style={Styles.sideHeroImage}>
-            <p style={Styles.sideHeroText}>Chúng tôi  trân trọng sự đồng hành của các bạn </p>
+            <p style={Styles.sideHeroText}>
+              Chúng tôi trân trọng sự đồng hành của các bạn{" "}
+            </p>
           </div>
           <div style={Styles.sideNav}>
             {pages.map((page, i) => {
@@ -105,16 +176,27 @@ import * as planting_api from "../apis/planting.api"
           </div>
           <p style={Styles.title}>{title}</p>
           <div style={Styles.galleryContainer}>
-            
             {galleryRender}
             <GalleryMore></GalleryMore>
           </div>
         </div>
         <p style={Styles.title}>{storyTitle}</p>
         <div style={Styles.storyContainer}>
-          <StoryCard title="Cây bàng ở môi trường ABC" name="Nguyễn Văn A" location="Lâm Đồng"></StoryCard>
-          <StoryCard title="Cây bàng ở môi trường ABC" name="Nguyễn Văn A" location="Lâm Đồng"></StoryCard>
-          <StoryCard title="Cây bàng ở môi trường ABC" name="Nguyễn Văn A" location="Lâm Đồng"></StoryCard>
+          <StoryCard
+            title="Cây bàng ở môi trường ABC"
+            name="Nguyễn Văn A"
+            location="Lâm Đồng"
+          ></StoryCard>
+          <StoryCard
+            title="Cây bàng ở môi trường ABC"
+            name="Nguyễn Văn A"
+            location="Lâm Đồng"
+          ></StoryCard>
+          <StoryCard
+            title="Cây bàng ở môi trường ABC"
+            name="Nguyễn Văn A"
+            location="Lâm Đồng"
+          ></StoryCard>
         </div>
         <div style={Styles.btnContainer}>
           <button style={Styles.loadMoreBtn}>Load more</button>
@@ -123,7 +205,7 @@ import * as planting_api from "../apis/planting.api"
     );
   }
 }
-export default withRouter(BioveAngel)
+export default withRouter(BioveAngel);
 const Styles = {
   sideHeroImage: {
     width: "100vw",
@@ -188,28 +270,27 @@ const Styles = {
     flexWrap: "wrap",
     gap: "20px",
   },
-  storyContainer:{
+  storyContainer: {
     marginLeft: "7%",
     width: "1108px",
     display: "flex",
     flexWrap: "wrap",
     gap: "20px",
-    marginBottom:"100px"
+    marginBottom: "100px",
   },
-  btnContainer:{
+  btnContainer: {
     marginLeft: "7%",
     width: "1108px",
     display: "flex",
-    justifyContent:'center',
-    marginBottom:"40px"
+    justifyContent: "center",
+    marginBottom: "40px",
   },
-  loadMoreBtn:{
-    border:'none',
-    background:"#FF5200",
-    color:"white",
-    fontSize:"16px",
-    width:"150px",
-    height:"40px"
-  }
-  
+  loadMoreBtn: {
+    border: "none",
+    background: "#FF5200",
+    color: "white",
+    fontSize: "16px",
+    width: "150px",
+    height: "40px",
+  },
 };

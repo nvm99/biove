@@ -32,3 +32,20 @@ export async function getCampaigns(community_id) {
     });
     return response.json();
 }
+export async function getTrees(campaign_id) {
+    const response = await fetch(url+"planting/get_list_trees", {
+        method: 'POST',
+        mode: 'cors', 
+        headers: {
+            "Accept": "application/json",
+            'Content-Type': 'application/json',
+            'Charset':'UTF-8',
+        },
+        redirect: 'follow', 
+        referrerPolicy: 'no-referrer',
+        body: JSON.stringify({
+            campaign_id:campaign_id,
+        })
+    });
+    return response.json();
+}

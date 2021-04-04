@@ -1,29 +1,40 @@
 import React, { Component } from "react";
 import sideHeroImage from "../../src/assets/sideHeroImage.png";
+import { withRouter } from "react-router-dom";
 import TreeCard from "../Components/TreeCard";
 import contact from "../../src/assets/contact.png";
 import momo from "../../src/assets/momo.png";
 import zalopay from "../../src/assets/zalopay.png";
+import QRCode from "qrcode.react";
 
-export default class TreeDonate extends Component {
+class TreeDonate extends Component {
   state = {
     paymentMethods: [momo, zalopay],
     paymentSelected: 0,
-    donateInput: "",
-    QR: undefined,
+    donateInput: "10000",
+    donateValue: "10000",
     paymentComponent: true,
+    isCheck: false,
+    btnFirstClick:false
   };
   onPaymentMethodSelected = (i) => {
     this.setState({
       paymentSelected: i,
     });
   };
-  handleForm = (evt) => {
+
+  handleForm = (event) => {
+    const target = event.target;
+    const value = target.type === "checkbox" ? target.checked : target.value;
+    const name = target.name;
+
     this.setState({
-      [evt.target.name]: evt.target.value,
+      [name]: value,
     });
   };
+
   render() {
+    const treeId = this.props.location.pathname.split("/")[2];
     const paymentMethods = this.state.paymentMethods.map((payment, i) => {
       if (this.state.paymentSelected === i) {
         return (
@@ -108,7 +119,7 @@ export default class TreeDonate extends Component {
               marginBottom: "0",
             }}
           >
-            Mã cây : 2021/1/003
+            Mã cây : {treeId}
           </p>
         </div>
         {this.state.paymentComponent === false ? (
@@ -251,6 +262,9 @@ export default class TreeDonate extends Component {
                     type="checkbox"
                     class="form-check-input"
                     id="exampleCheck1"
+                    checked={this.state.isCheck}
+                    onChange={this.handleForm}
+                    name="isCheck"
                   />
                   <label
                     class="form-check-label"
@@ -262,14 +276,25 @@ export default class TreeDonate extends Component {
                   </label>
                 </div>
                 <div style={Styles.btnContainer}>
-                  <button style={Styles.QRBtn}>Lấy mã QR</button>
+                  <button
+                    onClick={() => {
+                      this.setState({
+                        donateValue: this.state.donateInput,
+                        btnFirstClick:true
+                      });
+                      console.log(this.state.donateValue);
+                    }}
+                    style={Styles.QRBtn}
+                  >
+                    Lấy mã QR
+                  </button>
                   <button style={Styles.shareBtn}>Đi đến kiểm kê ủng hộ</button>
                 </div>
               </div>
               <div
                 style={{
-                  width: "343px",
-                  height: "333px",
+                  width: "300px",
+                  height: "300px",
                   background: "#DEDEDE",
                   marginLeft: "100px",
                   marginTop: "70px",
@@ -277,10 +302,11 @@ export default class TreeDonate extends Component {
                   alignItems: "center",
                   justifyContent: "center",
                 }}
-              >
-                {this.state.QR === undefined
-                  ? "Bấm vào nút lấy mã QR"
-                  : this.state.QR}
+              >{(this.state.isCheck===false&&this.state.btnFirstClick===undefined)?<p>Nhấn xác nhận trước khi lấy mã</p>:
+                <QRCode
+                  style={{ width: "100%", height: "100%" }}
+                  value={`2|99|0933795724|TRAN QUOC THINH|phutucthinh0@gmail.com|0|0|${this.state.donateValue}`}
+                />}
               </div>
             </div>
           </div>
@@ -289,6 +315,7 @@ export default class TreeDonate extends Component {
     );
   }
 }
+export default withRouter(TreeDonate);
 const Styles = {
   sideHeroImage: {
     width: "100vw",

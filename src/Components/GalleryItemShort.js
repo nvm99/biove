@@ -11,7 +11,7 @@ export default class GalleryItemShort extends Component {
       );
     }
     return (
-      <div style={Styles.overlayTextCampaign}>
+      <div  style={Styles.overlayTextCampaign}>
         <p style={{ marginBottom: "0", fontSize: "24px", fontWeight: "500" }}>
           {title}
         </p>
@@ -22,11 +22,11 @@ export default class GalleryItemShort extends Component {
     );
   };
   render() {
-    const { page, title, subTitle, image } = this.props;
+    const { page, title, subTitle, image, handleClick } = this.props;
     const overlayText = this.renderOverlayText(page, title, subTitle);
     return (
       <div>
-        <div style={Styles.galleryItemShort}>
+        <div onClick={handleClick} style={Styles.galleryItemShort}>
           <div style={Styles.overlay}></div>
           <img src={image} alt="short image" style={{ width: "100%" }}></img>
           {overlayText}
