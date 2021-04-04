@@ -9,13 +9,17 @@ import Navbar from "./Components/Navbar";
 import Profile from "./pages/Profile";
 import { withRouter, Route, Switch } from "react-router-dom";
 import Planting from "./pages/Planting";
-import BioveAngel from "./pages/BioveAngel";
+
 import Payment from "./pages/Payment";
 import HeatmapPage from "./pages/HeatmapPage";
 import About from "./pages/About";
 import Community from "./pages/Community";
 import TreeDonate from "./pages/TreeDonate"
 import Tree from "./pages/Tree"
+
+import BioveAngelCommunities from "./pages/BioveAngelCommunities";
+import BioveAngelCampaigns from "./pages/BioveAngelCampaigns";
+import BioveAngelTrees from "./pages/BioveAngelTrees";
 
 class App extends Component {
   renderPage = (page) => {
@@ -59,7 +63,7 @@ class App extends Component {
       case "angel":
         return (
           <>
-            <BioveAngel />
+            <BioveAngelCommunities/>
           </>
         );
       case "payment":
@@ -83,19 +87,19 @@ class App extends Component {
         case "community":
         return (
           <>
-            <Community />
+            <BioveAngelCampaigns />
+          </>
+        );
+        case "campaign":
+        return (
+          <>
+            <BioveAngelTrees/>
           </>
         );
         case "donate":
         return (
           <>
             <TreeDonate />
-          </>
-        );
-        case "tree":
-        return (
-          <>
-            <Tree />
           </>
         );
       default:
@@ -114,13 +118,11 @@ class App extends Component {
             // neu path la home thi su dung navbar home
             pathname == "/" ||
             pathname == "/planting" ||
-            pathname == "/angel" ||
+            pathname.match(/\/angel/g) == "/angel" ||
             pathname == "/payment" ||
             pathname == "/heatmap" ||
             pathname == "/about" ||
-            pathname =="/angel/community" ||
-            pathname.match(/\/donate/g) == "/donate"||
-            pathname =="/angel/tree"
+            pathname.match(/\/donate/g) == "/donate"
               ? { width: "100%", position: "absolute", zIndex: "10" }
               : Styles.navbarContainer
           }
@@ -154,11 +156,7 @@ class App extends Component {
               path="/planting"
               render={() => this.renderPage("planting")}
             ></Route>
-            <Route
-              exact
-              path="/angel"
-              render={() => this.renderPage("angel")}
-            ></Route>
+           
             <Route
               exact
               path="/payment"
@@ -174,21 +172,26 @@ class App extends Component {
               path="/about"
               render={() => this.renderPage("about")}
             ></Route>
-            <Route
+             <Route
               exact
-              path="/angel/community"
+              path="/angel"
+              render={() => this.renderPage("angel")}
+            ></Route>
+            <Route         
+              exact
+              path="/angel/:idCommunity"
               render={() => this.renderPage("community")}
             ></Route>
-            <Route
-              
-              path="/donate"
+            <Route         
+              exact
+              path="/angel/:idCommunity/:idCampaign"
+              render={() => this.renderPage("campaign")}
+            ></Route>
+            <Route         
+              path="/donate/:id"
               render={() => this.renderPage("donate")}
             ></Route>
-            <Route
-              exact
-              path="/angel/tree"
-              render={() => this.renderPage("tree")}
-            ></Route>
+
           </Switch>
         </div>
         <Footer />

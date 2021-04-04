@@ -20,7 +20,6 @@ firebase.initializeApp(firebaseConfig );
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <ScrollToTop />
       <App />
     </BrowserRouter>
   </React.StrictMode>,

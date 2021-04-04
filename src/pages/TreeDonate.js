@@ -11,11 +11,13 @@ class TreeDonate extends Component {
   state = {
     paymentMethods: [momo, zalopay],
     paymentSelected: 0,
-    donateInput: "10000",
-    donateValue: "10000",
+    donateInput: "",
+    donateValue: "",
     paymentComponent: true,
     isCheck: false,
-    btnFirstClick:false
+    btnFirstClick: false,
+    alert: false,
+    alertMoney: false,
   };
   onPaymentMethodSelected = (i) => {
     this.setState({
@@ -30,7 +32,20 @@ class TreeDonate extends Component {
 
     this.setState({
       [name]: value,
+    },()=>{
+      if(this.state.donateInput==""){
+        this.setState({
+          donateValue:""
+        })
+      }
     });
+
+    if (this.state.isCheck === false) {
+      this.setState({
+        btnFirstClick: false,
+      });
+    }
+
   };
 
   render() {
@@ -228,7 +243,7 @@ class TreeDonate extends Component {
                 </div>
                 <div style={Styles.inputName} class="mb-3">
                   <input
-                    type="text"
+                    type="number"
                     class="form-control"
                     id="donateInput"
                     aria-describedby="donateInput"
@@ -237,6 +252,11 @@ class TreeDonate extends Component {
                     onChange={this.handleForm}
                     value={this.state.donateInput}
                   />
+                  {this.state.alertMoney === true && (
+                    <p style={{ color: "red" }}>
+                      Nhập số tiền bạn muốn đóng góp
+                    </p>
+                  )}
                 </div>
                 <p
                   style={{
@@ -274,15 +294,36 @@ class TreeDonate extends Component {
                     Tôi đồng ý với những quy định mà BIOVE đưa ra.{" "}
                     <a href="#">Link to policies</a>
                   </label>
+                  {this.state.alert && (
+                    <p style={{ color: "red" }}>Nhấn đồng ý để lấy mã</p>
+                  )}
                 </div>
+
                 <div style={Styles.btnContainer}>
                   <button
                     onClick={() => {
+                      console.log(this.state.donateInput)
                       this.setState({
-                        donateValue: this.state.donateInput,
-                        btnFirstClick:true
+                        alert: !this.state.isCheck,
                       });
-                      console.log(this.state.donateValue);
+                      if (this.state.donateInput === "") {
+                        this.setState({
+                          alertMoney: true,
+                        });
+                      } else {
+                        this.setState({
+                          alertMoney: false,
+                          donateValue: this.state.donateInput,
+                        });
+                      }
+                      if (
+                        this.state.isCheck === true &&
+                        this.state.alertMoney === false
+                      ) {
+                        this.setState({
+                          btnFirstClick: true,
+                        });
+                      }
                     }}
                     style={Styles.QRBtn}
                   >
@@ -301,12 +342,23 @@ class TreeDonate extends Component {
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
+
+                  lineHeight: "30px",
                 }}
-              >{(this.state.isCheck===false&&this.state.btnFirstClick===undefined)?<p>Nhấn xác nhận trước khi lấy mã</p>:
-                <QRCode
-                  style={{ width: "100%", height: "100%" }}
-                  value={`2|99|0933795724|TRAN QUOC THINH|phutucthinh0@gmail.com|0|0|${this.state.donateValue}`}
-                />}
+              >
+                {this.state.isCheck === false ||
+                this.state.btnFirstClick === false ||
+                this.state.donateValue === "" ? (
+                  <p style={{ margin: "50px" }}>
+                    Chọn phương thức thanh toán và nhập số tiền, sau đó bấm lấy
+                    mã QR
+                  </p>
+                ) : (
+                  <QRCode
+                    style={{ width: "100%", height: "100%" }}
+                    value={`2|99|0933795724|TRAN QUOC THINH|phutucthinh0@gmail.com|0|0|${this.state.donateValue}`}
+                  />
+                )}
               </div>
             </div>
           </div>
