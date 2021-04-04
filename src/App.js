@@ -119,7 +119,7 @@ class App extends Component {
             pathname == "/heatmap" ||
             pathname == "/about" ||
             pathname =="/angel/community" ||
-            pathname =="/donate" ||
+            pathname.match(/\/donate/g) == "/donate"||
             pathname =="/angel/tree"
               ? { width: "100%", position: "absolute", zIndex: "10" }
               : Styles.navbarContainer

@@ -28,7 +28,7 @@ export default class GalleryItemShort extends Component {
       <div>
         <div style={Styles.galleryItemShort}>
           <div style={Styles.overlay}></div>
-          <img src={image} alt="short image" style={{ height: "100%" }}></img>
+          <img src={image} alt="short image" style={{ width: "100%" }}></img>
           {overlayText}
         </div>
       </div>

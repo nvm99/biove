@@ -1,5 +1,5 @@
-// const url = "https://api.biove.life/";
-const url = "http://localhost:2000/";
+const url = "https://api.biove.life/";
+// const url = "http://localhost:2000/";
 export async function getCommunities() {
     const response = await fetch(url+"planting/get_list_communities", {
         method: 'GET',

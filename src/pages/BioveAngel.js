@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import sideHeroImage from "../../src/assets/sideHeroImage.png";
-
+import {withRouter} from "react-router-dom"
 import GalleryItemLong from "../Components/GalleryItemLong";
 import GalleryItemShort from "../Components/GalleryItemShort";
 import GalleryMore from "../Components/GalleryMore";
@@ -8,20 +8,21 @@ import StoryCard from "../Components/StoryCard";
 import shortImage from "../assets/shortItem.png";
 import longImage from "../assets/longItem.png";
 import * as planting_api from "../apis/planting.api"
-export default class BioveAngel extends Component {
-  constructor(props){
-    super(props)
-    
-  }
+ class BioveAngel extends Component {
   componentDidMount(){
-    planting_api.getCommunities.then(data=>{
-      
+    planting_api.getCommunities().then(data=>{
+      this.setState({
+        communities:data
+      })
     })
   }
   
   state = {
     pages: ["COMMUNITY", "CAMPAIGN", "TREES"],
     pageSelected: 0,
+    communities:[],
+    campaigns:[],
+    trees:[]
     
   };
   renderTitle = () => {
@@ -34,6 +35,30 @@ export default class BioveAngel extends Component {
         return "Top Beloved Trees";
     }
   };
+  onCommunityClick=()=>{
+    this.setState({
+      pageSelected:1
+    })
+  }
+  onCampaignClick=()=>{
+    this.setState({
+      pageSelected:2
+    })
+  }
+  onTreeClick=(id)=>{
+    this.props.history.push("/donate"+id)
+  }
+  renderGallery=()=>{
+    switch(this.state.pageSelected){
+      case 0:
+        return this.state.communities.map((community,i)=>{
+          if(community.name==="BIOVE"){
+            return <GalleryItemLong page={0} title={community.name}  image={community.avatar} />
+          }
+          return <GalleryItemShort page={0} title={community.name}  image={community.avatar} />
+        })
+    }
+  }
   renderStoryTitle=()=>{
     switch (this.state.pageSelected) {
       case 0:
@@ -44,15 +69,9 @@ export default class BioveAngel extends Component {
         return "Our stories";
     }
   }
-  renderGalleryItem = (size) => {
-    if (this.state.pageSelected === 0) {
-      if (size === "long") {
-        return;
-      }
-    }
-  };
   render() {
     const { pages, pageSelected } = this.state;
+    const galleryRender=this.renderGallery()
     const title = this.renderTitle();
     const storyTitle = this.renderStoryTitle();
     return (
@@ -85,8 +104,8 @@ export default class BioveAngel extends Component {
           </div>
           <p style={Styles.title}>{title}</p>
           <div style={Styles.galleryContainer}>
-            <GalleryItemLong page={pageSelected} title="DA NANG" subTitle="Thanh nien lam theo loi Bac" image={longImage} />
-            <GalleryItemShort page={pageSelected} title="Can tho" subTitle="Thanh nien Can Tho" image={shortImage}/>
+            
+            {galleryRender}
             <GalleryMore></GalleryMore>
           </div>
         </div>
@@ -103,6 +122,7 @@ export default class BioveAngel extends Component {
     );
   }
 }
+export default withRouter(BioveAngel)
 const Styles = {
   sideHeroImage: {
     width: "100vw",
