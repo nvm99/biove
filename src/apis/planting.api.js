@@ -16,17 +16,19 @@ export async function getCommunities() {
     return response.json();
 }
 export async function getCampaigns(community_id) {
-    const response = await fetch(url+"planting/get_list_communities", {
-        method: 'GET',
+    const response = await fetch(url+"planting/get_list_campaigns", {
+        method: 'POST',
         mode: 'cors', 
         headers: {
             "Accept": "application/json",
             'Content-Type': 'application/json',
             'Charset':'UTF-8',
-            'Authorization': localStorage.getItem('token')
         },
         redirect: 'follow', 
         referrerPolicy: 'no-referrer',
+        body: JSON.stringify({
+            community_id:community_id,
+        })
     });
     return response.json();
 }

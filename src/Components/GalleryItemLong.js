@@ -27,7 +27,7 @@ export default class GalleryItemLong extends Component {
     return (
       <div style={Styles.galleryItemLong}>
         <div style={Styles.overlay}></div>
-        <img src={image} alt="long image" style={{ height: "100%" }}></img>
+        <img src={image} alt="long image" style={{ width: "100%" }}></img>
         {overlayText}
       </div>
     );
