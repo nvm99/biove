@@ -1,3 +1,8 @@
+# Biove
+
+> A single page web application to encourage planting trees. Built with Create React App.
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
